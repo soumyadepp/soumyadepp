@@ -1,4 +1,4 @@
-### Hi there, I'm Soumyadeep Ghosh [website] 👋 
+### <center>Hi there, I'm Soumyadeep Ghosh 👋 </center>
 
 
 

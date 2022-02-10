@@ -1,4 +1,4 @@
-### <h1 align="center">Hi, I am Soumyadeep </h1>
+### <h1 align="center" style="border-bottom:2px solid #efefef">Hi, I am Soumyadeep </h1>
 
 
 

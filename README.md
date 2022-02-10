@@ -19,7 +19,7 @@
 
 ### Stats:
 [![Soumyadepp's GitHub stats](https://github-readme-stats.vercel.app/api?username=soumyadepp)](https://github.com/soumyadepp/github-readme-stats)
-
+[![Soumyadeep's Favourite Languages](https://github-readme-stats.vercel.app/api/top-langs?username=vrundan28)](https://github.com/soumyadepp/github-readme-stats)
 ### Languages and Tools:
 
 
@@ -45,19 +45,11 @@
 <br />
 
 
-
-### 📕 Latest Blog Posts
-
-
-
-➡️ [more blog posts...](https://codestackr.com)
-
 ---
 
 <details>
   <summary>:zap: Recent GitHub Activity</summary>
   
-
 </details>
 
 

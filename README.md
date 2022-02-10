@@ -17,10 +17,7 @@
 [<img align="left" alt="codeSTACKr | Instagram" width="22px"  style="color:#fff;" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />][instagram]
 <br />
 
-### Stats:
-[![Soumyadepp's GitHub stats](https://github-readme-stats.vercel.app/api?username=soumyadepp)](https://github.com/soumyadepp/github-readme-stats)
-<br/>
-[![Soumyadeep's Favourite Languages](https://github-readme-stats.vercel.app/api/top-langs?username=soumyadepp)](https://github.com/soumyadepp/github-readme-stats)
+
 ### Languages and Tools:
 
 
@@ -50,7 +47,10 @@
 
 <details>
   <summary>:zap: Recent GitHub Activity</summary>
-  
+  ### Stats:
+[![Soumyadepp's GitHub stats](https://github-readme-stats.vercel.app/api?username=soumyadepp)](https://github.com/soumyadepp/github-readme-stats)
+<br/>
+[![Soumyadeep's Favourite Languages](https://github-readme-stats.vercel.app/api/top-langs?username=soumyadepp)](https://github.com/soumyadepp/github-readme-stats)
 </details>
 
 

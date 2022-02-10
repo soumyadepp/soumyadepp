@@ -1,4 +1,4 @@
-### <center>Hi there, I'm Soumyadeep Ghosh 👋 </center>
+### <h1 align="center">Hi, I am Soumyadeep </h1>
 
 
 

@@ -1,65 +1,72 @@
-### <h1 align="center" style="border-bottom:2px solid #efefef">Hi, I am Soumyadeep </h1>
-<h2>Please visit &nbsp;<a href = "https://soumyadeepdevfolio.web.app/">My Website</a></h2>
+<h1 align="center">Hi, I'm Soumyadeep Ghosh 👋</h1>
+<h3 align="center">Software Engineer | Full-Stack Developer | AI Enthusiast | Educator</h3>
 
-
-
-## I'm a Web and android developer, a competitive programmer and a Teacher!!
-
-- 🌱 I’m currently learning everything 🤣
-- 👯 I’m looking to collaborate with other content creators
-- 🥅 2021 Goals: Contribute more to Open Source projects
-- ⚡ Fun fact: I love to draw and play guitar / piano
-
-### Connect with me:
-
-
-[<img align="left" alt="codeSTACKr | Twitter" width="22px" style="color:#fff;" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />][twitter]
-[<img align="left" alt="codeSTACKr | LinkedIn" width="22px"  style="color:#fff;" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />][linkedin]
-[<img align="left" alt="codeSTACKr | Instagram" width="22px"  style="color:#fff;" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />][instagram]
-<br />
-
-### <h1 align="center"> Stats </h1>
-[![Soumyadepp's GitHub stats](https://github-readme-stats.vercel.app/api?username=soumyadepp)](https://github.com/soumyadepp/github-readme-stats)
-<br/>
-[![Soumyadeep's Favourite Languages](https://github-readme-stats.vercel.app/api/top-langs?username=soumyadepp)](https://github.com/soumyadepp/github-readme-stats)
-
-### Languages and Tools:
-
-
-[<img align="left" alt="Visual Studio Code" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" />][webdevplaylist]
-[<img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />][webdevplaylist]
-[<img align="left" alt="CSS3" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" />][webdevplaylist]
-[<img align="left" alt="Sass" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/sass/sass.png" />][webdevplaylist]
-[<img align="left" alt="JavaScript" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" />][webdevplaylist]
-[<img align="left" alt="React" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png" />][webdevplaylist]
-[<img align="left" alt="Node.js" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png" />][webdevplaylist]
-[<img align="left" alt="Deno" width="26px" src="https://raw.githubusercontent.com/github/explore/361e2821e2dea67711cde99c9c40ed357061cf27/topics/deno/deno.png" />][webdevplaylist]
-[<img align="left" alt="SQL" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/sql/sql.png" />][webdevplaylist]
-[<img align="left" alt="Flutter" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/flutter/flutter.png" />][webdevplaylist]
-[<img align="left" alt="MySQL" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mysql/mysql.png" />][webdevplaylist]
-[<img align="left" alt="MongoDB" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mongodb/mongodb.png" />][webdevplaylist]
-[<img align="left" alt="Git" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png" />][webdevplaylist]
-[<img align="left" alt="Git" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/tailwind/tailwind.png" />][webdevplaylist]
-[<img align="left" alt="GitHub" width="26px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />][webdevplaylist]
-[<img align="left" alt="Terminal" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/terminal/terminal.png" />][webdevplaylist]
-
-
-<br />
-<br />
-
+<p align="center">
+  <a href="https://soumyadeepdevfolio.web.app/">🌐 Visit My Portfolio</a> •
+  <a href="https://www.linkedin.com/in/soumyadeep-ghosh-90a1951b6/">💼 LinkedIn</a> •
+  <a href="https://github.com/soumyadepp">📂 GitHub</a>
+</p>
 
 ---
 
-<details>
-  <summary>:zap: Recent GitHub Activity</summary>
-</details>
+## 👨‍💻 About Me
 
+I'm a Software Engineer passionate about building impactful and scalable tech products across the web, mobile, and AI domains. I bring a blend of **strong fundamentals, leadership, and product thinking** to every project I work on.
 
+- 💼 Currently at **Infocusp Innovations**, building generative AI applications and cloud-native systems.
+- 🛠️ Worked on production-grade platforms using **React, Next.js, Node.js, FastAPI, and Ruby on Rails**.
+- 🌐 Experienced with **cloud platforms** like AWS & GCP (S3, Lambda, API Gateway, Firebase, BigQuery).
+- 🧠 Interested in **Generative AI**, backend systems, and performance-driven frontend architecture.
+- 🎙️ Conducted tech seminars and mentored peers—I'm always eager to share knowledge.
+- 🎯 2025 Goals: Contribute more to open source, publish educational content, and explore Rust + WASM.
+- 🎸 Fun fact: I love sketching and playing guitar or piano in my downtime!
 
-[website]: https://perfectweb.io
-[twitter]: https://twitter.com/SoumyadeepSGho1
-[instagram]:https://www.instagram.com/soumyadepp/
-[linkedin]:https://www.linkedin.com/in/soumyadeep-ghosh-90a1951b6/
-[webdevplaylist]: www.github.com/soumyadepp
+---
 
+## 📌 Noteworthy Projects
 
+- **[PopSub](https://github.com/soumyadepp/popsub)**: A lightweight, high-performance WebSocket-based Pub/Sub server written in Rust. Features include:
+  - Topic-based subscriptions with real-time broadcasting.
+  - Persistent message storage and replay logic.
+  - Multi-client support with reconnect handling and message history.
+  - Designed for extensibility and scalable deployment.
+ 
+- **[SkillKit](https://github.com/soumyadepp/SkillKit)**: An employee management application built on MERN stack.
+
+- **[HertzPlayer](https://github.com/soumyadepp/HertzPlayer)**: A sleek, Spotify-integrated music player with Supabase, RecoilJS, and MongoDB. Implements OAuth and player state management.
+
+You can explore more in my pinned repositories!
+
+---
+
+## 🛠️ Tech Stack
+
+**Languages**:  
+Python • C/C++ • JavaScript • TypeScript • SQL (Postgres) • Rust
+
+**Frontend**:  
+React • Next.js • Angular • Tailwind CSS • MUI • RecoilJS • Three.js • Mapbox
+
+**Backend**:  
+Node.js • Ruby on Rails • FastAPI • GraphQL • Redis • Supabase
+
+**Cloud & DevOps**:  
+AWS (Lambda, S3, API Gateway, CloudWatch) • GCP (Cloud Run, Firebase, BigQuery)  
+Terraform • CloudFormation • Docker • Git • CI/CD (Bitbucket, GitHub Actions)
+
+---
+
+## 📈 GitHub Stats
+
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=soumyadepp&show_icons=true&theme=github_dark&hide_border=true" width="49.5%" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=soumyadepp&layout=compact&theme=github_dark&hide_border=true" width="49.5%" />
+</div>
+
+---
+
+## 🤝 Let's Connect!
+
+[![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/SoumyadeepSGho1)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/soumyadeep-ghosh-90a1951b6/)
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/soumyadepp/)

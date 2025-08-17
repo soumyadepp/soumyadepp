@@ -31,7 +31,7 @@ I'm a Software Engineer passionate about building impactful and scalable tech pr
   - Multi-client support with reconnect handling and message history.
   - Designed for extensibility and scalable deployment.
  
-- **[SkillKit](https://github.com/soumyadepp/SkillKit)**: An employee management application built on MERN stack.
+- **[PhotoRecipe](https://github.com/soumyadepp/PhotoRecipe)**: An app that converts food pictures to detailed recipes, which can be further modified by users and exported to PDF
 
 - **[HertzPlayer](https://github.com/soumyadepp/HertzPlayer)**: A sleek, Spotify-integrated music player with Supabase, RecoilJS, and MongoDB. Implements OAuth and player state management.
 

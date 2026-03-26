@@ -655,15 +655,79 @@ export default function Hero() {
               shipping fast, thinking deep.
             </motion.p>
 
+            {/* Company logos */}
+            <motion.div
+              {...fadeUp(0.31)}
+              className="flex flex-col items-start gap-4 mb-12"
+            >
+              <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-widest">
+                ✦ WORKED AT
+              </span>
+              <div className="flex gap-4 items-center">
+                {[
+                  {
+                    name: "Infocusp",
+                    logo: "/images/infocusp_logo.jpeg",
+                    url: "https://infocusp.com",
+                    current: true,
+                  },
+                  {
+                    name: "Shipmnts",
+                    logo: "/images/shipmnts_logo.jpeg",
+                    url: "https://shipmnts.com",
+                    current: false,
+                  },
+                  {
+                    name: "Vardaam",
+                    logo: "/images/vardaam_logo.jpeg",
+                    url: "https://vardaam.com",
+                    current: false,
+                  },
+                ].map((company, idx) => (
+                  <Link
+                    key={company.name}
+                    href={company.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <motion.div
+                      className="relative group"
+                      whileHover={{ scale: 1.15 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        delay: 0.31 + idx * 0.08,
+                        duration: 0.5,
+                      }}
+                      title={company.name}
+                    >
+                      <div className="relative w-9 h-9 rounded-lg opacity-70 hover:opacity-100 transition-opacity">
+                        <Image
+                          src={company.logo}
+                          alt={company.name}
+                          fill
+                          className="object-contain"
+                          sizes="36px"
+                        />
+                      </div>
+                      {company.current && (
+                        <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-500 animate-pulse border border-white dark:border-zinc-950" />
+                      )}
+                    </motion.div>
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+
             {/* CTAs */}
             <motion.div
               {...fadeUp(0.38)}
-              className="flex flex-wrap gap-4 mb-12"
+              className="flex flex-col sm:flex-row gap-3 mb-12 w-full sm:w-auto"
             >
               <Magnetic>
                 <Link
                   href="/projects"
-                  className="flex items-center gap-2 bg-sky-600 hover:bg-sky-500 dark:bg-sky-600 dark:hover:bg-sky-500 text-white px-6 py-3 rounded-xl font-medium transition-all shadow-lg shadow-sky-500/25 hover:shadow-sky-500/45 hover:shadow-xl"
+                  className="flex items-center justify-center gap-2 bg-sky-600 hover:bg-sky-500 dark:bg-sky-600 dark:hover:bg-sky-500 text-white px-6 py-3 rounded-xl font-medium transition-all shadow-lg shadow-sky-500/25 hover:shadow-sky-500/45 hover:shadow-xl"
                 >
                   View my work
                   <motion.span
@@ -677,7 +741,7 @@ export default function Hero() {
               <Magnetic>
                 <Link
                   href="/contact"
-                  className="flex items-center gap-2 bg-zinc-100 dark:bg-zinc-900 hover:bg-zinc-200 dark:hover:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 px-6 py-3 rounded-xl font-medium transition-all"
+                  className="flex items-center justify-center gap-2 bg-zinc-100 dark:bg-zinc-900 hover:bg-zinc-200 dark:hover:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 px-6 py-3 rounded-xl font-medium transition-all"
                 >
                   Get in touch
                 </Link>
@@ -685,7 +749,7 @@ export default function Hero() {
               <Magnetic>
                 <Link
                   href="/resume"
-                  className="flex items-center gap-2 bg-transparent hover:bg-zinc-200 dark:hover:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 px-6 py-3 rounded-xl font-medium transition-all"
+                  className="flex items-center justify-center gap-2 bg-transparent hover:bg-zinc-200 dark:hover:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 px-6 py-3 rounded-xl font-medium transition-all"
                 >
                   Resume
                 </Link>

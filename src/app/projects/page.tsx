@@ -363,6 +363,40 @@ export default function ProjectsPage() {
                       {project.description}
                     </p>
 
+                    {/* Key Features (if available) */}
+                    {project.keyFeatures && project.keyFeatures.length > 0 && (
+                      <div className="mt-2 pt-2 border-t border-zinc-200 dark:border-zinc-800">
+                        <p className="text-xs text-zinc-400 dark:text-zinc-500 font-medium mb-1.5">
+                          Key features:
+                        </p>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+                          {project.keyFeatures.slice(0, 4).map((feature) => (
+                            <li
+                              key={feature}
+                              className="text-xs text-zinc-600 dark:text-zinc-400 flex items-center gap-1.5"
+                            >
+                              <span className="w-1 h-1 rounded-full bg-sky-500/60" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Tech Stack */}
+                    {project.techStack && project.techStack.length > 0 && (
+                      <div className="mt-3 flex items-center gap-2 flex-wrap">
+                        {project.techStack.map((tech) => (
+                          <span
+                            key={tech.name}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/60 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-sky-50 dark:hover:bg-sky-500/10 transition-colors"
+                          >
+                            {tech.name}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
                     {/* Tags */}
                     <ul className="flex flex-wrap gap-1.5 mt-1">
                       {project.tags.map((tag) => (

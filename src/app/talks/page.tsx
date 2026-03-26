@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { MapPin, X, ChevronLeft, ChevronRight } from "lucide-react";
 import PageHeader from "@/components/layout/PageHeader";
 import { talks } from "@/data/talks";
@@ -20,11 +21,11 @@ function Lightbox({
 
   const prev = useCallback(
     () => setIndex((i) => (i - 1 + images.length) % images.length),
-    [images.length]
+    [images.length],
   );
   const next = useCallback(
     () => setIndex((i) => (i + 1) % images.length),
-    [images.length]
+    [images.length],
   );
 
   useEffect(() => {
@@ -77,14 +78,20 @@ function Lightbox({
         {images.length > 1 && (
           <>
             <button
-              onClick={(e) => { e.stopPropagation(); prev(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                prev();
+              }}
               className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors bg-white/5 hover:bg-white/10 rounded-full p-2"
               aria-label="Previous"
             >
               <ChevronLeft size={24} />
             </button>
             <button
-              onClick={(e) => { e.stopPropagation(); next(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                next();
+              }}
               className="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors bg-white/5 hover:bg-white/10 rounded-full p-2"
               aria-label="Next"
             >
@@ -103,12 +110,23 @@ function Lightbox({
           {images.map((img, i) => (
             <button
               key={i}
-              onClick={(e) => { e.stopPropagation(); setIndex(i); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                setIndex(i);
+              }}
               className={`relative shrink-0 w-12 h-8 rounded overflow-hidden border-2 transition-all ${
-                i === index ? "border-sky-400 opacity-100" : "border-transparent opacity-40 hover:opacity-70"
+                i === index
+                  ? "border-sky-400 opacity-100"
+                  : "border-transparent opacity-40 hover:opacity-70"
               }`}
             >
-              <Image src={img} alt="" fill className="object-cover" sizes="48px" />
+              <Image
+                src={img}
+                alt=""
+                fill
+                className="object-cover"
+                sizes="48px"
+              />
             </button>
           ))}
         </div>
@@ -118,7 +136,10 @@ function Lightbox({
 }
 
 export default function TalksPage() {
-  const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
+  const [lightbox, setLightbox] = useState<{
+    images: string[];
+    index: number;
+  } | null>(null);
 
   const totalPhotos = talks.reduce((acc, t) => acc + t.images.length, 0);
   const universities = new Set(talks.map((t) => t.venue)).size;
@@ -128,11 +149,11 @@ export default function TalksPage() {
       <main className="min-h-screen bg-background">
         {/* ── Header ── */}
         <PageHeader maxWidth="max-w-5xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <p className="font-mono text-sky-500 dark:text-sky-400 text-sm mb-4 tracking-widest uppercase">
               speaker / educator
             </p>
@@ -156,7 +177,9 @@ export default function TalksPage() {
                   <p className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
                     {String(value).padStart(2, "0")}
                   </p>
-                  <p className="font-mono text-xs text-zinc-500 mt-0.5">{label}</p>
+                  <p className="font-mono text-xs text-zinc-500 mt-0.5">
+                    {label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -193,7 +216,13 @@ export default function TalksPage() {
                     loading={i === 0 ? "eager" : undefined}
                   />
                   {/* Gradient overlay */}
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 50%, transparent 100%)" }} />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 50%, transparent 100%)",
+                    }}
+                  />
 
                   {/* Overlaid text */}
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8">
@@ -220,15 +249,23 @@ export default function TalksPage() {
                   <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm flex-1">
                     {talk.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 sm:justify-end sm:max-w-xs">
-                    {talk.topics.map((topic) => (
-                      <span
-                        key={topic}
-                        className="font-mono text-xs text-sky-600 dark:text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3 py-1 rounded-full"
-                      >
-                        {topic}
-                      </span>
-                    ))}
+                  <div className="flex flex-col gap-3 sm:max-w-xs">
+                    <div className="flex flex-wrap gap-2">
+                      {talk.topics.map((topic) => (
+                        <span
+                          key={topic}
+                          className="font-mono text-xs text-sky-600 dark:text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3 py-1 rounded-full"
+                        >
+                          {topic}
+                        </span>
+                      ))}
+                    </div>
+                    <Link
+                      href={`/talks/${talk.id}`}
+                      className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900/50 rounded-lg hover:bg-sky-100 dark:hover:bg-sky-950/50 transition-colors"
+                    >
+                      View details →
+                    </Link>
                   </div>
                 </div>
 
@@ -238,7 +275,9 @@ export default function TalksPage() {
                     {talk.images.map((img, j) => (
                       <button
                         key={j}
-                        onClick={() => setLightbox({ images: talk.images, index: j })}
+                        onClick={() =>
+                          setLightbox({ images: talk.images, index: j })
+                        }
                         className="relative shrink-0 w-32 h-20 rounded-lg overflow-hidden group/thumb"
                       >
                         <Image

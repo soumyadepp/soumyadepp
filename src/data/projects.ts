@@ -13,6 +13,9 @@ export type Project = {
   live?: string;
   image?: string;
   gallery?: string[];
+  longDescription?: string;
+  keyFeatures?: string[];
+  techStack?: Array<{ name: string; icon?: string }>;
 };
 
 export const projects: Project[] = [
@@ -20,7 +23,22 @@ export const projects: Project[] = [
     title: "PopSub",
     description:
       "A lightweight WebSocket pub/sub broker written in Rust. Supports topic-based routing, replay buffers for recent messages, QoS=1 at-least-once delivery with acknowledgements, JWT-based auth, and optional sled persistence — designed to be simple to run locally and straightforward to extend.",
+    longDescription:
+      "PopSub is a minimal, self-contained pub/sub system optimized for developers who need reliable message distribution without operational complexity. Built for edge deployments and local development.",
+    keyFeatures: [
+      "Topic-based message routing",
+      "QoS=1 at-least-once delivery",
+      "JWT-based authentication",
+      "Optional persistence with sled",
+      "Replay buffer for recent messages",
+    ],
     tags: ["Rust", "WebSocket", "Pub/Sub", "JWT", "Tokio", "sled"],
+    techStack: [
+      { name: "Rust" },
+      { name: "Tokio" },
+      { name: "WebSocket" },
+      { name: "sled" },
+    ],
     status: "in development",
     github: "https://github.com/soumyadepp/popsub",
     image: "/images/popsub/popsub.svg",
@@ -29,6 +47,15 @@ export const projects: Project[] = [
     title: "Northern Cleaning Crew",
     description:
       "Designed and developed a client website for a cleaning business where they can showcase and manage their services, and visitors can request quotes directly through the site.",
+    longDescription:
+      "A full-stack web application built for a cleaning business to manage services, showcase their work, and streamline client quote requests. Includes admin dashboard for service management.",
+    keyFeatures: [
+      "Service management dashboard",
+      "Interactive service showcase",
+      "Quote request system",
+      "Email notifications",
+      "Responsive design for all devices",
+    ],
     tags: [
       "React",
       "TypeScript",
@@ -36,6 +63,13 @@ export const projects: Project[] = [
       "Redux",
       "React Hook Forms",
       "Firebase",
+    ],
+    techStack: [
+      { name: "React" },
+      { name: "TypeScript" },
+      { name: "Tailwind CSS" },
+      { name: "Firebase" },
+      { name: "Redux" },
     ],
     status: "completed",
     gallery: [
@@ -49,6 +83,15 @@ export const projects: Project[] = [
     title: "PhotoRecipe",
     description:
       "Snap a photo of your ingredients and get a complete recipe in seconds. AI identifies what you have, suggests missing items, then generates a recipe with a name, ingredient list, and step-by-step instructions — all editable and exportable as a PDF.",
+    longDescription:
+      "An AI-powered recipe generation app that uses computer vision to identify ingredients from photos and leverages LLMs to generate customized recipes in real-time.",
+    keyFeatures: [
+      "AI-powered ingredient recognition",
+      "Real-time recipe generation",
+      "Editable recipe content",
+      "PDF export functionality",
+      "Missing ingredient suggestions",
+    ],
     tags: [
       "Next.js",
       "Genkit",
@@ -56,6 +99,13 @@ export const projects: Project[] = [
       "ShadCN UI",
       "Tailwind CSS",
       "Firebase",
+    ],
+    techStack: [
+      { name: "Next.js" },
+      { name: "Gemini API" },
+      { name: "Genkit" },
+      { name: "Firebase" },
+      { name: "TypeScript" },
     ],
     status: "disabled",
     github: "https://github.com/soumyadepp/PhotoRecipe",

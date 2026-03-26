@@ -29,6 +29,7 @@ import {
   SiJira,
   SiConfluence,
   SiBitbucket,
+  SiTerraform,
 } from "react-icons/si";
 import type { IconType } from "react-icons";
 
@@ -53,6 +54,7 @@ const skillMeta: Record<string, SkillMeta> = {
   "AWS Lambda": { color: "#FF9900" },
   "AWS EC2": { color: "#FF9900" },
   "AWS Cognito": { color: "#FF9900" },
+  "AWS CloudFormation": { color: "#FF9900" },
   Docker: { icon: SiDocker, color: "#2496ED" },
   Git: { icon: SiGit, color: "#F05032" },
   Solidity: { icon: SiSolidity, color: "#818CF8" },
@@ -68,6 +70,7 @@ const skillMeta: Record<string, SkillMeta> = {
   Confluence: { icon: SiConfluence, color: "#0052CC" },
   Bitbucket: { icon: SiBitbucket, color: "#0052CC" },
   Figma: { icon: SiFigma, color: "#F24E1E" },
+  Terraform: { icon: SiTerraform, color: "#844FEC" },
 };
 
 type CategoryConfig = { accent: string; lightAccent: string };
@@ -95,7 +98,15 @@ const skillCategories = [
   },
   {
     label: "Backend",
-    skills: ["Node.js", "FastAPI", "Ruby on Rails", "Python", "Rust", "REST APIs", "Firebase"],
+    skills: [
+      "Node.js",
+      "FastAPI",
+      "Ruby on Rails",
+      "Python",
+      "Rust",
+      "REST APIs",
+      "Firebase",
+    ],
   },
   {
     label: "Cloud & Infra",
@@ -106,14 +117,26 @@ const skillCategories = [
       "AWS Lambda",
       "AWS EC2",
       "AWS Cognito",
+      "AWS CloudFormation",
       "Docker",
+      "Terraform",
       "BigQuery",
       "Tippecanoe",
     ],
   },
   {
     label: "Tools & Others",
-    skills: ["Git", "Solidity", "System Design", "Linear", "Notion", "Figma", "Jira", "Confluence", "Bitbucket"],
+    skills: [
+      "Git",
+      "Solidity",
+      "System Design",
+      "Linear",
+      "Notion",
+      "Figma",
+      "Jira",
+      "Confluence",
+      "Bitbucket",
+    ],
   },
 ];
 
@@ -241,8 +264,8 @@ export default function AboutPage() {
               behind the code.
             </h1>
             <p className="text-zinc-600 dark:text-zinc-400 text-base sm:text-lg mb-5 leading-relaxed">
-              Software engineer who loves solving moonshots and over-delivering
-              on every challenge.
+              Software engineer passionate about building products that solve
+              real problems and making an impact through code.
             </p>
             <div className="flex items-center gap-2 text-zinc-500 text-sm mb-6">
               <MapPin size={14} />
@@ -251,12 +274,15 @@ export default function AboutPage() {
             <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
               Over the last ~3 years I&apos;ve shipped products across AEC,
               mental health, smart manufacturing, and logistics, owning the full
-              journey from ideation to production.
+              journey from ideation to production. I believe in building systems
+              that are elegant, reliable, and thoughtfully designed.
             </p>
             <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-8">
-              Outside engineering, I&apos;ve been a TEDx host, a competitive
-              programmer, a world-finalist, and a university speaker. I believe
-              the best engineers are curious about far more than just code.
+              Beyond code, I&apos;m endlessly curious. Chess since age 4 taught
+              me patience and strategy. Music (guitar, keyboard), sports
+              (basketball, cricket), and visual arts (sketching, painting,
+              cooking) keep my creativity flowing. These diverse interests shape
+              how I approach problems, bringing perspective beyond the screen.
             </p>
 
             {/* Stats */}
@@ -461,6 +487,113 @@ export default function AboutPage() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* Interests */}
+        <motion.div {...fadeUp} className="mb-14 md:mb-24">
+          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-2 flex items-center gap-4">
+            Interests & Passions
+            <span className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800 ml-4" />
+          </h2>
+          <p className="font-mono text-zinc-500 text-sm mb-8 sm:mb-10">
+            {"// life beyond the code"}
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              {
+                title: "Chess",
+                description:
+                  "Playing since age 4. Strategy, patience, and long-term thinking.",
+                color: "sky",
+              },
+              {
+                title: "Music",
+                description:
+                  "Guitar and keyboard. A creative outlet that keeps me grounded.",
+                color: "emerald",
+              },
+              {
+                title: "Sports",
+                description:
+                  "Basketball and cricket. Team dynamics and competitive spirit.",
+                color: "violet",
+              },
+              {
+                title: "Visual Arts",
+                description:
+                  "Sketching and painting. Expressing ideas beyond words.",
+                color: "amber",
+              },
+              {
+                title: "Cooking",
+                description:
+                  "Experimenting with flavors and techniques. Precision meets creativity.",
+                color: "rose",
+              },
+              {
+                title: "Learning",
+                description:
+                  "Constantly exploring new ideas, technologies, and perspectives.",
+                color: "cyan",
+              },
+            ].map((interest, i) => {
+              const colorMap: Record<
+                string,
+                { bg: string; border: string; accent: string }
+              > = {
+                sky: {
+                  bg: "bg-sky-50 dark:bg-sky-950/30",
+                  border: "border-sky-200 dark:border-sky-900/50",
+                  accent: "text-sky-600 dark:text-sky-400",
+                },
+                emerald: {
+                  bg: "bg-emerald-50 dark:bg-emerald-950/30",
+                  border: "border-emerald-200 dark:border-emerald-900/50",
+                  accent: "text-emerald-600 dark:text-emerald-400",
+                },
+                violet: {
+                  bg: "bg-violet-50 dark:bg-violet-950/30",
+                  border: "border-violet-200 dark:border-violet-900/50",
+                  accent: "text-violet-600 dark:text-violet-400",
+                },
+                amber: {
+                  bg: "bg-amber-50 dark:bg-amber-950/30",
+                  border: "border-amber-200 dark:border-amber-900/50",
+                  accent: "text-amber-600 dark:text-amber-400",
+                },
+                rose: {
+                  bg: "bg-rose-50 dark:bg-rose-950/30",
+                  border: "border-rose-200 dark:border-rose-900/50",
+                  accent: "text-rose-600 dark:text-rose-400",
+                },
+                cyan: {
+                  bg: "bg-cyan-50 dark:bg-cyan-950/30",
+                  border: "border-cyan-200 dark:border-cyan-900/50",
+                  accent: "text-cyan-600 dark:text-cyan-400",
+                },
+              };
+              const colors = colorMap[interest.color];
+              return (
+                <motion.div
+                  key={interest.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  className={`${colors.bg} border ${colors.border} rounded-xl p-5 hover:shadow-md hover:shadow-black/5 dark:hover:shadow-black/20 transition-all duration-300`}
+                >
+                  <h3
+                    className={`font-semibold text-zinc-900 dark:text-zinc-100 mb-2 ${colors.accent}`}
+                  >
+                    {interest.title}
+                  </h3>
+                  <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+                    {interest.description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </div>

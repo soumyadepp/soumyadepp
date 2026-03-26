@@ -1,0 +1,111 @@
+@import "tailwindcss";
+@import "highlight.js/styles/github-dark.css";
+
+/* Class-based dark mode for next-themes */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Colour tokens ─────────────────────────────────── */
+:root {
+  /* AEC light – blueprint vellum & structural steel */
+  --background: #f0f4fb;   /* blueprint paper tint            */
+  --foreground: #0f1929;   /* deep technical ink               */
+  --card:        #ffffff;
+  --card-border: #bcc8d9;  /* steel-blue drafting line         */
+  --muted:       #5a6e84;  /* slate-blue muted text            */
+  --hero-gradient: linear-gradient(90deg, #0369a1, #0e7490, #0369a1); /* sky-700→cyan-700, visible on light */
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #f4f4f5;
+  --card:        #18181b;
+  --card-border: #27272a;
+  --muted:       #71717a;
+  --hero-gradient: linear-gradient(90deg, #38bdf8, #22d3ee, #38bdf8); /* sky-400→cyan-300, glowing on dark */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background-color: #1d4ed8;   /* blueprint blue */
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 3px;
+}
+
+/* ── highlight.js — transparent bg so our wrapper styles apply ── */
+.hljs {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* ── SVG / hero accent tokens ────────────────────── */
+/* Light: sky-700 family; Dark: indigo-500 family    */
+:root {
+  --svg-stroke-strong: rgba(3, 105, 161, 0.6);
+  --svg-stroke-mid:    rgba(3, 105, 161, 0.38);
+  --svg-stroke-faint:  rgba(3, 105, 161, 0.18);
+  --svg-fill-strong:   rgba(3, 105, 161, 0.55);
+  --svg-fill-faint:    rgba(3, 105, 161, 0.08);
+  --svg-text-color:    rgba(3, 105, 161, 0.5);
+  --cursor-spotlight:  rgba(3, 105, 161, 0.09);
+}
+.dark {
+  --svg-stroke-strong: rgba(99, 102, 241, 0.7);
+  --svg-stroke-mid:    rgba(99, 102, 241, 0.38);
+  --svg-stroke-faint:  rgba(99, 102, 241, 0.18);
+  --svg-fill-strong:   rgba(99, 102, 241, 0.55);
+  --svg-fill-faint:    rgba(99, 102, 241, 0.08);
+  --svg-text-color:    rgba(99, 102, 241, 0.5);
+  --cursor-spotlight:  rgba(99, 102, 241, 0.11);
+}
+
+/* ── SVG hero animations ──────────────────────────── */
+@keyframes svg-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes svg-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes svg-pulse {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.9;  }
+}
+
+@keyframes svg-flow {
+  to { stroke-dashoffset: -18; }
+}
+
+@keyframes svg-float {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-8px); }
+}

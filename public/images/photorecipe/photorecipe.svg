@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" fill="none">
+  <rect width="600" height="320" fill="#09090b"/>
+
+  <!-- Subtle grid -->
+  <line x1="0" y1="80" x2="600" y2="80" stroke="#27272a" stroke-width="0.5"/>
+  <line x1="0" y1="160" x2="600" y2="160" stroke="#27272a" stroke-width="0.5"/>
+  <line x1="0" y1="240" x2="600" y2="240" stroke="#27272a" stroke-width="0.5"/>
+  <line x1="150" y1="0" x2="150" y2="320" stroke="#27272a" stroke-width="0.5"/>
+  <line x1="300" y1="0" x2="300" y2="320" stroke="#27272a" stroke-width="0.5"/>
+  <line x1="450" y1="0" x2="450" y2="320" stroke="#27272a" stroke-width="0.5"/>
+
+  <!-- ── Left: Photo upload card ── -->
+  <rect x="30" y="70" width="150" height="175" rx="12" fill="#0d1117" stroke="#3f3f46" stroke-width="1.2"/>
+  <!-- Camera icon area -->
+  <rect x="50" y="88" width="110" height="80" rx="8" fill="#18181b" stroke="#52525b" stroke-width="1"/>
+  <!-- Camera body -->
+  <rect x="73" y="108" width="64" height="44" rx="5" fill="#27272a"/>
+  <!-- Lens -->
+  <circle cx="105" cy="130" r="14" fill="#09090b" stroke="#f97316" stroke-width="1.5"/>
+  <circle cx="105" cy="130" r="9" fill="#18181b" stroke="#f97316" stroke-width="1"/>
+  <circle cx="105" cy="130" r="4" fill="#f97316" opacity="0.6"/>
+  <!-- Viewfinder bump -->
+  <rect x="92" y="104" width="16" height="8" rx="3" fill="#27272a"/>
+  <!-- Flash dot -->
+  <circle cx="125" cy="112" r="3" fill="#fbbf24" opacity="0.8"/>
+
+  <text x="105" y="185" text-anchor="middle" font-family="monospace" font-size="9" fill="#71717a">snap a photo</text>
+  <text x="105" y="198" text-anchor="middle" font-family="monospace" font-size="9" fill="#52525b">drag &amp; drop</text>
+
+  <!-- Upload arrow -->
+  <line x1="105" y1="215" x2="105" y2="228" stroke="#f97316" stroke-width="1.5"/>
+  <polygon points="105,212 100,220 110,220" fill="#f97316"/>
+  <text x="105" y="240" text-anchor="middle" font-family="monospace" font-size="9" fill="#f97316">upload</text>
+
+  <!-- ── Arrow 1: photo → AI ── -->
+  <line x1="180" y1="157" x2="224" y2="157" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.8"/>
+  <polygon points="224,157 215,152 215,162" fill="#f97316" opacity="0.8"/>
+  <text x="202" y="148" text-anchor="middle" font-family="monospace" font-size="8" fill="#f97316">image</text>
+
+  <!-- ── Centre: AI brain card ── -->
+  <rect x="226" y="90" width="148" height="140" rx="14" fill="#0d1b0f" stroke="#22c55e" stroke-width="1.8"/>
+  <rect x="226" y="90" width="148" height="140" rx="14" fill="none" stroke="#22c55e" stroke-width="6" opacity="0.07"/>
+
+  <text x="300" y="116" text-anchor="middle" font-family="monospace" font-size="9" fill="#86efac">AI Chef</text>
+  <text x="300" y="134" text-anchor="middle" font-family="monospace" font-size="17" font-weight="bold" fill="#dcfce7">PhotoRecipe</text>
+  <text x="300" y="150" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ade80">Genkit · Gemini</text>
+
+  <!-- Ingredient chips detected -->
+  <rect x="240" y="158" width="48" height="15" rx="6" fill="#14532d" stroke="#16a34a" stroke-width="0.8"/>
+  <text x="264" y="169" text-anchor="middle" font-family="monospace" font-size="8" fill="#86efac">🥚 eggs</text>
+
+  <rect x="293" y="158" width="68" height="15" rx="6" fill="#14532d" stroke="#16a34a" stroke-width="0.8"/>
+  <text x="327" y="169" text-anchor="middle" font-family="monospace" font-size="8" fill="#86efac">🧅 onion</text>
+
+  <rect x="240" y="177" width="70" height="15" rx="6" fill="#14532d" stroke="#16a34a" stroke-width="0.8"/>
+  <text x="275" y="188" text-anchor="middle" font-family="monospace" font-size="8" fill="#86efac">🧄 garlic</text>
+
+  <rect x="315" y="177" width="46" height="15" rx="6" fill="#14532d" stroke="#16a34a" stroke-width="0.8"/>
+  <text x="338" y="188" text-anchor="middle" font-family="monospace" font-size="8" fill="#86efac">🍅 …</text>
+
+  <text x="300" y="210" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ade80">+ smart suggestions</text>
+
+  <!-- ── Arrow 2: AI → Recipe ── -->
+  <line x1="374" y1="157" x2="418" y2="157" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.8"/>
+  <polygon points="418,157 409,152 409,162" fill="#22c55e" opacity="0.8"/>
+  <text x="396" y="148" text-anchor="middle" font-family="monospace" font-size="8" fill="#22c55e">recipe</text>
+
+  <!-- ── Right: Recipe card ── -->
+  <rect x="420" y="70" width="150" height="175" rx="12" fill="#0d1117" stroke="#3f3f46" stroke-width="1.2"/>
+  <!-- Recipe title bar -->
+  <rect x="420" y="70" width="150" height="30" rx="12" fill="#1c1917"/>
+  <rect x="420" y="88" width="150" height="12" fill="#1c1917"/>
+  <text x="495" y="89" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#fcd34d">Shakshuka</text>
+
+  <!-- Divider -->
+  <line x1="435" y1="102" x2="555" y2="102" stroke="#3f3f46" stroke-width="0.8"/>
+
+  <!-- Ingredients list -->
+  <text x="438" y="114" font-family="monospace" font-size="8" fill="#a3a3a3">Ingredients</text>
+  <circle cx="441" cy="123" r="2" fill="#f97316"/>
+  <text x="447" y="126" font-family="monospace" font-size="8" fill="#d4d4d4">4 eggs</text>
+  <circle cx="441" cy="133" r="2" fill="#f97316"/>
+  <text x="447" y="136" font-family="monospace" font-size="8" fill="#d4d4d4">1 onion, diced</text>
+  <circle cx="441" cy="143" r="2" fill="#f97316"/>
+  <text x="447" y="146" font-family="monospace" font-size="8" fill="#d4d4d4">2 garlic cloves</text>
+  <circle cx="441" cy="153" r="2" fill="#f97316"/>
+  <text x="447" y="156" font-family="monospace" font-size="8" fill="#d4d4d4">400g tomatoes</text>
+
+  <!-- Divider -->
+  <line x1="435" y1="162" x2="555" y2="162" stroke="#3f3f46" stroke-width="0.8"/>
+
+  <!-- Steps -->
+  <text x="438" y="174" font-family="monospace" font-size="8" fill="#a3a3a3">Steps</text>
+  <text x="438" y="184" font-family="monospace" font-size="7.5" fill="#737373">1. Sauté onion &amp; garlic…</text>
+  <text x="438" y="194" font-family="monospace" font-size="7.5" fill="#737373">2. Add tomatoes, simmer…</text>
+  <text x="438" y="204" font-family="monospace" font-size="7.5" fill="#737373">3. Crack eggs, cover…</text>
+
+  <!-- PDF export button -->
+  <rect x="435" y="213" width="70" height="18" rx="5" fill="#1c1917" stroke="#f59e0b" stroke-width="0.8"/>
+  <text x="470" y="225" text-anchor="middle" font-family="monospace" font-size="8" fill="#f59e0b">↓ PDF</text>
+
+  <!-- Edit button -->
+  <rect x="512" y="213" width="43" height="18" rx="5" fill="#18181b" stroke="#52525b" stroke-width="0.8"/>
+  <text x="533" y="225" text-anchor="middle" font-family="monospace" font-size="8" fill="#a3a3a3">✎ edit</text>
+
+  <!-- ── Bottom badges ── -->
+  <rect x="30" y="274" width="74" height="22" rx="6" fill="#0c1a2e" stroke="#38bdf8" stroke-width="1"/>
+  <text x="67" y="289" text-anchor="middle" font-family="monospace" font-size="9" fill="#7dd3fc">Next.js</text>
+
+  <rect x="112" y="274" width="68" height="22" rx="6" fill="#0d1b0f" stroke="#22c55e" stroke-width="1"/>
+  <text x="146" y="289" text-anchor="middle" font-family="monospace" font-size="9" fill="#86efac">Genkit AI</text>
+
+  <rect x="188" y="274" width="72" height="22" rx="6" fill="#1c1a0e" stroke="#ca8a04" stroke-width="1"/>
+  <text x="224" y="289" text-anchor="middle" font-family="monospace" font-size="9" fill="#fcd34d">ShadCN UI</text>
+
+  <rect x="268" y="274" width="90" height="22" rx="6" fill="#150d1c" stroke="#a855f7" stroke-width="1"/>
+  <text x="313" y="289" text-anchor="middle" font-family="monospace" font-size="9" fill="#d8b4fe">Tailwind CSS</text>
+
+  <rect x="366" y="274" width="58" height="22" rx="6" fill="#1c1917" stroke="#f97316" stroke-width="1"/>
+  <text x="395" y="289" text-anchor="middle" font-family="monospace" font-size="9" fill="#fb923c">jsPDF</text>
+
+  <rect x="432" y="274" width="138" height="22" rx="6" fill="#0c1a2e" stroke="#f97316" stroke-width="1"/>
+  <text x="501" y="289" text-anchor="middle" font-family="monospace" font-size="9" fill="#fed7aa">Firebase Hosting</text>
+</svg>

@@ -285,7 +285,7 @@ export default function TalksPage() {
                           alt="Talk photo"
                           fill
                           className="object-cover transition-transform duration-300 group-hover/thumb:scale-110"
-                          sizes="128px"
+                          sizes="(max-width: 640px) 128px, 128px"
                         />
                         <div className="absolute inset-0 bg-black/0 group-hover/thumb:bg-black/30 transition-colors duration-200 rounded-lg" />
                       </button>

@@ -430,7 +430,7 @@ export default function AboutPage() {
         </motion.div>
 
         {/* Certifications & Awards */}
-        <motion.div {...fadeUp}>
+        <motion.div {...fadeUp} className="mb-14 md:mb-24">
           <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-10 flex items-center gap-4">
             Certifications &amp; Awards
             <span className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800 ml-4" />

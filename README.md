@@ -2,7 +2,7 @@
 
 A modern, interactive personal portfolio and resume website built with **Next.js 16**, **React 19**, and **Tailwind CSS**. Features a dark mode toggle, smooth animations, project showcases with image galleries, experience timeline, blog section with markdown support, and talks archive.
 
-**Live Demo**: [soumyadeep.dev](https://soumyadeep.dev)
+**Live Demo**: [soumyadepp.vercel.app](https://soumyadepp.vercel.app/)
 
 ---
 

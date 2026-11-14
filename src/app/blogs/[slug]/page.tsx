@@ -51,7 +51,7 @@ export default async function PostPage({ params }: Props) {
               alt=""
               width={0}
               height={0}
-              unoptimized
+              unoptimized={post.coverImage.endsWith(".svg")}
               priority
               sizes="(min-width: 1024px) 30vw, 100vw"
               className="block h-auto max-h-[26rem] w-full border border-line bg-panel object-contain"

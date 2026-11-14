@@ -30,6 +30,7 @@ function shots(chapter: Chapter, size: string) {
         alt=""
         fill
         sizes={size}
+        loading="eager"
         className={`object-cover object-top ${image.still ? "still" : "tint"}`}
       />
     </Link>

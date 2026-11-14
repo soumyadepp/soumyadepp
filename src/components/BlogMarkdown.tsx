@@ -21,7 +21,7 @@ export default function BlogMarkdown({ content }: { content: string }) {
               alt={alt ?? ""}
               width={1200}
               height={675}
-              unoptimized
+              unoptimized={src.endsWith(".svg")}
               sizes="(min-width: 1024px) 680px, 100vw"
             />
           ) : null,

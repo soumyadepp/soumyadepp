@@ -45,7 +45,7 @@ export default function WritingPage() {
                   src={post.coverImage}
                   alt=""
                   fill
-                  unoptimized
+                  unoptimized={post.coverImage.endsWith(".svg")}
                   sizes="11rem"
                   className="tint object-cover"
                 />

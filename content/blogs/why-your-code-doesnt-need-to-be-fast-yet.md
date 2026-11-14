@@ -3,7 +3,7 @@ title: "Why Your Code Doesn't Need to Be Fast — Yet"
 date: "2025-07-22"
 tags: ["Software Engineering", "Best Practices", "Clean Code", "Performance"]
 excerpt: "Premature optimization is the root of all evil — but what does that actually mean? A look at why optimizing too early hurts more than it helps, and when you should actually care about performance."
-readTime: "7 min read"
+readTime: 7
 author: "Soumyadeep Ghosh"
 coverImage: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*59zeHVARqRFnMB3z7NwXKA.png"
 ---

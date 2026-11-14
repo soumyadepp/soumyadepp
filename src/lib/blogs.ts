@@ -60,3 +60,40 @@ export function getBlogBySlug(slug: string): Blog | null {
     content,
   };
 }
+
+/**
+ * Formats a post date as a short month and year.
+ *
+ * Args:
+ *   date: An ISO date string from a post's frontmatter.
+ *
+ * Returns:
+ *   Text such as "Mar 2026", or an empty string when the date is missing.
+ */
+export function formatMonth(date: string): string {
+  if (!date) return "";
+  return new Date(date).toLocaleDateString("en-GB", {
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+/**
+ * Formats a post date in full.
+ *
+ * Args:
+ *   date: An ISO date string from a post's frontmatter.
+ *
+ * Returns:
+ *   Text such as "24 March 2026", or an empty string when the date is missing.
+ */
+export function formatDay(date: string): string {
+  if (!date) return "";
+  return new Date(date).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}

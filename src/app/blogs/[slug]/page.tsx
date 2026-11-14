@@ -1,117 +1,95 @@
-import { notFound } from "next/navigation";
-import { getAllBlogs, getBlogBySlug } from "@/lib/blogs";
-import BlogMarkdown from "@/components/BlogMarkdown";
-import { Clock, ArrowLeft, Tag } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import BlogMarkdown from "@/components/BlogMarkdown";
+import Crumb from "@/components/layout/Crumb";
+import { SITE, WRITING_PAGE } from "@/content/site";
+import { formatDay, getAllBlogs, getBlogBySlug } from "@/lib/blogs";
 
-interface Props {
+type Props = {
   params: Promise<{ slug: string }>;
-}
+};
 
-export async function generateStaticParams() {
-  return getAllBlogs().map((b) => ({ slug: b.slug }));
+export function generateStaticParams() {
+  return getAllBlogs().map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const blog = getBlogBySlug(slug);
-  if (!blog) return {};
+  const post = getBlogBySlug(slug);
+  if (!post) return {};
   return {
-    title: `${blog.title} | Soumyadeep Ghosh`,
-    description: blog.excerpt,
+    title: `${post.title} | ${SITE.fullName}`,
+    description: post.excerpt,
   };
 }
 
-function formatDate(dateStr: string) {
-  if (!dateStr) return "";
-  const d = new Date(dateStr);
-  return d.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
-
-export default async function BlogPostPage({ params }: Props) {
+export default async function PostPage({ params }: Props) {
   const { slug } = await params;
-  const blog = getBlogBySlug(slug);
-  if (!blog) notFound();
+  const post = getBlogBySlug(slug);
+  if (!post) notFound();
 
   return (
-    <main className="min-h-screen bg-background">
-      {/* Back */}
-      <div className="max-w-3xl mx-auto px-6 pt-28 pb-2">
-        <Link
-          href="/blogs"
-          className="inline-flex items-center gap-1.5 font-mono text-xs text-zinc-400 hover:text-sky-500 dark:hover:text-sky-400 transition-colors group"
-        >
-          <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
-          all posts
-        </Link>
-      </div>
-
-      {/* Hero */}
-      <header className="max-w-3xl mx-auto px-6 pt-6 pb-12 border-b border-zinc-200/60 dark:border-zinc-800/60">
-        {/* Tags */}
-        <div className="flex items-center gap-2 flex-wrap mb-5">
-          <Tag size={12} className="text-zinc-400" />
-          {blog.tags.map((tag) => (
-            <span
-              key={tag}
-              className="font-mono text-[11px] text-sky-600 dark:text-sky-400/80 bg-sky-500/8 border border-sky-500/15 dark:border-sky-500/10 px-2.5 py-0.5 rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
+    <>
+      <header className="wrap grid gap-x-6 gap-y-10 pt-28 pb-14 md:pt-40 lg:grid-cols-12 lg:items-end">
+        <div className="flex flex-col gap-5 lg:col-span-7">
+          <Crumb
+            anchor="writing"
+            parent={{ label: WRITING_PAGE.kicker, href: "/blogs" }}
+            label={formatDay(post.date)}
+          />
+          <h1 className="t-title max-w-[60rem]">{post.title}</h1>
+          <p className="t-sub max-w-[46rem] font-normal text-body">
+            {post.excerpt}
+          </p>
         </div>
-
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.15] mb-6">
-          {blog.title}
-        </h1>
-
-        <p className="text-zinc-500 dark:text-zinc-400 text-base leading-relaxed mb-8 max-w-xl">
-          {blog.excerpt}
-        </p>
-
-        <div className="flex items-center gap-5 text-xs font-mono text-zinc-400">
-          <span>{formatDate(blog.date)}</span>
-          <span className="flex items-center gap-1.5">
-            <Clock size={11} />
-            {blog.readTime} min read
-          </span>
-        </div>
+        {post.coverImage && (
+          <div className="w-full max-w-[34rem] lg:col-span-4 lg:col-start-9 lg:justify-self-end">
+            <Image
+              src={post.coverImage}
+              alt=""
+              width={0}
+              height={0}
+              unoptimized
+              priority
+              sizes="(min-width: 1024px) 30vw, 100vw"
+              className="block h-auto max-h-[26rem] w-full border border-line bg-panel object-contain"
+            />
+          </div>
+        )}
       </header>
 
-      {/* Banner image */}
-      {blog.coverImage && (
-        <div className="max-w-3xl mx-auto px-6 pt-10">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={blog.coverImage}
-            alt={blog.title}
-            className="w-full h-auto rounded-xl border border-zinc-200 dark:border-zinc-800"
-          />
-        </div>
-      )}
+      <div className="on-paper bg-paper text-stage">
+        <div className="wrap grid gap-x-6 gap-y-10 pt-16 pb-24 lg:grid-cols-12">
+          <aside className="t-small flex flex-col gap-6 lg:sticky lg:top-8 lg:col-span-3 lg:self-start">
+            <div className="flex flex-col gap-1">
+              <span className="text-ink-soft">{WRITING_PAGE.published}</span>
+              <span className="font-semibold">{formatDay(post.date)}</span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-ink-soft">{WRITING_PAGE.readingTime}</span>
+              <span className="font-semibold">
+                {post.readTime} {WRITING_PAGE.minutesLong}
+              </span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-ink-soft">{WRITING_PAGE.topics}</span>
+              <span className="font-semibold">{post.tags.join(", ")}</span>
+            </div>
+            <Link
+              href="/blogs"
+              className="self-start border-b-2 border-stage py-3 font-semibold hover:opacity-70"
+            >
+              {WRITING_PAGE.back}
+            </Link>
+          </aside>
 
-      {/* Markdown content */}
-      <div className="max-w-3xl mx-auto px-6 py-14">
-        <BlogMarkdown content={blog.content} />
-      </div>
-
-      {/* Footer nav */}
-      <div className="border-t border-zinc-200/60 dark:border-zinc-800/60 mt-8">
-        <div className="max-w-3xl mx-auto px-6 py-10">
-          <Link
-            href="/blogs"
-            className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-sky-500 dark:hover:text-sky-400 transition-colors group"
-          >
-            <ArrowLeft size={15} className="group-hover:-translate-x-0.5 transition-transform" />
-            Back to all posts
-          </Link>
+          <article className="prose-paper min-w-0 lg:col-span-8 lg:col-start-5">
+            <BlogMarkdown content={post.content} />
+          </article>
         </div>
       </div>
-    </main>
+    </>
   );
 }

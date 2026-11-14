@@ -1,24 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Host_Grotesk } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import ThemeProvider from "@/components/providers/ThemeProvider";
+import Nav from "@/components/layout/Nav";
+import { SITE } from "@/content/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const host = Host_Grotesk({
+  variable: "--font-host",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Soumyadeep Ghosh | Software Engineer",
-  description:
-    "Software engineer at Infocusp Innovations. I love solving hard problems and over-delivering.",
+  title: SITE.title,
+  description: SITE.description,
 };
 
 export default function RootLayout({
@@ -27,21 +21,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
-      suppressHydrationWarning
-      data-scroll-behavior="smooth"
-    >
-      <body
-        className="bg-background text-foreground antialiased min-h-screen flex flex-col"
-        suppressHydrationWarning
-      >
-        <ThemeProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </ThemeProvider>
+    <html lang="en" className={host.variable}>
+      <body className="min-h-screen">
+        <Nav />
+        <main>{children}</main>
       </body>
     </html>
   );

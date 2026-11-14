@@ -1,111 +1,437 @@
 @import "tailwindcss";
 @import "highlight.js/styles/github-dark.css";
 
-/* Class-based dark mode for next-themes */
-@custom-variant dark (&:where(.dark, .dark *));
-
-/* ── Colour tokens ─────────────────────────────────── */
 :root {
-  /* AEC light – blueprint vellum & structural steel */
-  --background: #f0f4fb;   /* blueprint paper tint            */
-  --foreground: #0f1929;   /* deep technical ink               */
-  --card:        #ffffff;
-  --card-border: #bcc8d9;  /* steel-blue drafting line         */
-  --muted:       #5a6e84;  /* slate-blue muted text            */
-  --hero-gradient: linear-gradient(90deg, #0369a1, #0e7490, #0369a1); /* sky-700→cyan-700, visible on light */
-}
-
-.dark {
-  --background: #09090b;
-  --foreground: #f4f4f5;
-  --card:        #18181b;
-  --card-border: #27272a;
-  --muted:       #71717a;
-  --hero-gradient: linear-gradient(90deg, #38bdf8, #22d3ee, #38bdf8); /* sky-400→cyan-300, glowing on dark */
+  --stage: #050607;
+  --panel: #14181b;
+  --line: #3b4248;
+  --rule: #859099;
+  --quiet: #b9c1c8;
+  --body: #dde1e4;
+  --paper: #eef0f2;
+  --ink-soft: #3b4248;
+  --ease: cubic-bezier(0.19, 1, 0.22, 1);
+  --gutter: clamp(16px, 2.8vw, 40px);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-stage: var(--stage);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-rule: var(--rule);
+  --color-quiet: var(--quiet);
+  --color-body: var(--body);
+  --color-paper: var(--paper);
+  --color-ink-soft: var(--ink-soft);
+  --font-sans: var(--font-host), "Helvetica Neue", Arial, sans-serif;
+  --ease-reel: var(--ease);
 }
 
 html {
-  scroll-behavior: smooth;
+  background: var(--stage);
+  font-size: clamp(16px, 0.42vw + 10.5px, 18.5px);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  background: var(--stage);
+  color: var(--paper);
+  font-family: var(--font-host), "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background-color: #1d4ed8;   /* blueprint blue */
-  color: #fff;
+  background: var(--paper);
+  color: var(--stage);
 }
 
-::-webkit-scrollbar {
-  width: 6px;
+:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 3px;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--background);
+.on-paper :focus-visible {
+  outline-color: var(--stage);
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--card-border);
-  border-radius: 3px;
+.wrap {
+  width: 100%;
+  max-width: 96rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
-/* ── highlight.js — transparent bg so our wrapper styles apply ── */
-.hljs {
-  background: transparent !important;
-  padding: 0 !important;
+.t-display {
+  font-size: clamp(3.25rem, 9vw, 6.5rem);
+  line-height: 0.96;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
 }
 
-/* ── SVG / hero accent tokens ────────────────────── */
-/* Light: sky-700 family; Dark: indigo-500 family    */
-:root {
-  --svg-stroke-strong: rgba(3, 105, 161, 0.6);
-  --svg-stroke-mid:    rgba(3, 105, 161, 0.38);
-  --svg-stroke-faint:  rgba(3, 105, 161, 0.18);
-  --svg-fill-strong:   rgba(3, 105, 161, 0.55);
-  --svg-fill-faint:    rgba(3, 105, 161, 0.08);
-  --svg-text-color:    rgba(3, 105, 161, 0.5);
-  --cursor-spotlight:  rgba(3, 105, 161, 0.09);
-}
-.dark {
-  --svg-stroke-strong: rgba(99, 102, 241, 0.7);
-  --svg-stroke-mid:    rgba(99, 102, 241, 0.38);
-  --svg-stroke-faint:  rgba(99, 102, 241, 0.18);
-  --svg-fill-strong:   rgba(99, 102, 241, 0.55);
-  --svg-fill-faint:    rgba(99, 102, 241, 0.08);
-  --svg-text-color:    rgba(99, 102, 241, 0.5);
-  --cursor-spotlight:  rgba(99, 102, 241, 0.11);
+.t-title {
+  font-size: clamp(2.25rem, 5.2vw, 4rem);
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
 }
 
-/* ── SVG hero animations ──────────────────────────── */
-@keyframes svg-draw {
-  to { stroke-dashoffset: 0; }
+.t-heading {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
-@keyframes svg-fade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+.t-sub {
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
-@keyframes svg-pulse {
-  0%, 100% { opacity: 0.35; }
-  50%       { opacity: 0.9;  }
+.t-lead {
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
 }
 
-@keyframes svg-flow {
-  to { stroke-dashoffset: -18; }
+.t-body {
+  font-size: 1.0625rem;
+  line-height: 1.55;
 }
 
-@keyframes svg-float {
-  0%, 100% { transform: translateY(0px);  }
-  50%       { transform: translateY(-8px); }
+.t-small {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.t-label {
+  font-size: 0.875rem;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.link-line {
+  border-bottom: 2px solid currentColor;
+  padding-block: 0.75rem;
+  transition: opacity 180ms var(--ease);
+}
+
+.link-line:hover {
+  opacity: 0.7;
+}
+
+.tint {
+  transition: filter 500ms var(--ease);
+}
+
+@media (hover: hover) {
+  .tint {
+    filter: grayscale(1) brightness(0.9);
+  }
+
+  a:hover .tint,
+  a:focus-visible .tint {
+    filter: none;
+  }
+}
+
+.still {
+  filter: grayscale(1) contrast(1.12) brightness(0.85);
+}
+
+@keyframes cut {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cut {
+  animation: cut 1100ms var(--ease) both;
+}
+
+.drift {
+  animation: drift 26s ease-out forwards;
+  transform-origin: 42% 45%;
+}
+
+.fade {
+  animation: fade 1100ms var(--ease) both;
+}
+
+.spotlight {
+  background: radial-gradient(
+    circle 22rem at var(--spot-x, 65%) var(--spot-y, 60%),
+    rgb(255 190 130 / 0.26),
+    rgb(255 170 110 / 0.1) 45%,
+    rgb(255 170 110 / 0) 100%
+  );
+  mix-blend-mode: screen;
+  opacity: var(--spot-on, 0);
+  transition: opacity 700ms var(--ease);
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: cut linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+
+@keyframes glide {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(260%);
+  }
+}
+
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+.cue-track {
+  position: relative;
+  display: block;
+  width: 5.5rem;
+  height: 1px;
+  overflow: hidden;
+  background: rgb(133 144 153 / 0.4);
+  transition: width 500ms var(--ease);
+}
+
+.cue:hover .cue-track,
+.cue:focus-visible .cue-track {
+  width: 7.5rem;
+}
+
+.cue-glint {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 45%;
+  background: linear-gradient(90deg, rgb(238 240 242 / 0), rgb(238 240 242));
+  animation: glide 2600ms var(--ease) infinite;
+}
+
+.cue-arrow {
+  animation: nudge 2600ms var(--ease) infinite;
+}
+
+.grabbable {
+  cursor: grab;
+}
+
+.grabbable:active {
+  cursor: grabbing;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cut,
+  .drift,
+  .fade,
+  .cue-glint,
+  .cue-arrow {
+    animation: none;
+  }
+}
+
+.prose-paper {
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: var(--stage);
+}
+
+.prose-paper > * + * {
+  margin-top: 1.5rem;
+}
+
+.prose-paper h1 {
+  display: none;
+}
+
+.prose-paper h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 4rem;
+  scroll-margin-top: 6rem;
+}
+
+.prose-paper h3 {
+  font-size: 1.625rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 2.5rem;
+  scroll-margin-top: 6rem;
+}
+
+.prose-paper h4 {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.prose-paper p,
+.prose-paper ul,
+.prose-paper ol,
+.prose-paper blockquote {
+  max-width: 42.5rem;
+}
+
+.prose-paper a {
+  border-bottom: 1px solid var(--stage);
+}
+
+.prose-paper a:hover {
+  border-bottom-width: 2px;
+}
+
+.prose-paper strong {
+  font-weight: 600;
+}
+
+.prose-paper ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.prose-paper ol {
+  list-style: decimal;
+  padding-left: 1.25rem;
+}
+
+.prose-paper li + li {
+  margin-top: 0.5rem;
+}
+
+.prose-paper blockquote {
+  font-size: 1.625rem;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  border-top: 1px solid var(--stage);
+  border-bottom: 1px solid var(--stage);
+  padding-block: 1.5rem;
+}
+
+.prose-paper hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin-block: 3rem;
+}
+
+.prose-paper :not(pre) > code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: #dde1e4;
+  padding: 0.1em 0.35em;
+}
+
+.prose-paper pre {
+  background: var(--stage);
+  color: var(--paper);
+  padding: 1.75rem 2rem;
+  overflow-x: auto;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  max-width: 100%;
+}
+
+.prose-paper pre code.hljs {
+  background: transparent;
+  padding: 0;
+}
+
+.prose-paper img {
+  display: block;
+  width: 100%;
+  max-width: 56rem;
+  height: auto;
+}
+
+.prose-paper table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.prose-paper th,
+.prose-paper td {
+  text-align: left;
+  padding: 0.75rem 1rem 0.75rem 0;
+  border-top: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+.prose-paper th {
+  font-weight: 600;
+  border-top-color: var(--stage);
+}
+
+.resume {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  line-height: 1.32;
+  color: #000000;
+}
+
+.resume a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@page {
+  size: A4;
+  margin: 11mm 13mm;
+}
+
+@media print {
+  html {
+    font-size: 16px;
+    background: #ffffff;
+  }
+
+  body {
+    background: #ffffff;
+  }
 }

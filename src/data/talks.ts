@@ -18,6 +18,32 @@ export type Talk = {
 
 export const talks: Talk[] = [
   {
+    id: "charusat-stl",
+    title: "The C++ Standard Template Library, from the Inside",
+    event: "Guest Session",
+    venue: "Charusat University, Anand",
+    date: "2026",
+    audience: "Engineering students learning C++ and data structures",
+    topics: ["C++", "STL", "Data Structures", "Algorithms"],
+    description:
+      "A session on the C++ Standard Template Library that went past using vector, map and set, into how they work and why each operation costs what it does.",
+    longDescription:
+      "We started with the containers, iterators and algorithms students already use, then opened them up: what sits underneath each one, why certain operations have the complexity they do, and how knowing that changes the code you write. A library is much more interesting once you stop treating it as a black box.",
+    keyTakeaways: [
+      "Vectors, maps, sets, stacks and queues, and when to reach for each",
+      "How iterators and algorithms fit together",
+      "What each container is built on",
+      "Why operations have the complexity they do",
+      "Using that knowledge to write better code",
+    ],
+    images: [
+      "/images/charusat_stl/stl_talk_2.jpeg",
+      "/images/charusat_stl/stl_talk_3.jpeg",
+      "/images/charusat_stl/stl_talk_1.jpeg",
+    ],
+    featured: "/images/charusat_stl/stl_talk_2.jpeg",
+  },
+  {
     id: "ddu-cloud",
     title: "Cloud Basics, AWS & Chaos Engineering",
     event: "DDU Tech Talk",

@@ -1,5 +1,5 @@
-import Hero from "@/components/sections/Hero";
+import ChapterReel from "@/components/home/ChapterReel";
 
 export default function Home() {
-  return <Hero />;
+  return <ChapterReel />;
 }

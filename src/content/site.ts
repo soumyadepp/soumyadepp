@@ -107,7 +107,7 @@ export const CHAPTERS: Chapter[] = [
     href: "/experience",
     kicker: "Experience",
     title: "Where I've worked.",
-    line: "Founding engineer on a building design product, from an empty repository to production. Now I lead the team behind it.",
+    line: "Cargo that moves, beds that rest, minds that heal, buildings that stand. I've written software for all four.",
     action: "See my experience",
     badges: COMPANY_ORBITS,
     mode: "orbits",

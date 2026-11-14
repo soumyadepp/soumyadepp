@@ -92,7 +92,7 @@ export const CHAPTERS: Chapter[] = [
     href: "/about",
     kicker: "",
     title: "Messy problems in, calm software out.",
-    line: "I'm Soumyadeep, a software engineer. I joined a building design product as one of its first engineers, and today I lead the team that builds it.",
+    line: "I'm Soumyadeep. I ship on Fridays and still sleep well.",
     action: "About me",
     secondary: { label: "Resume", href: "/resume" },
     mode: "pull",

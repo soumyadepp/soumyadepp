@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import SoundToggle from "@/components/sound/SoundToggle";
 import Frame from "@/components/reel/Frame";
 import {
   CHAPTERS,
   GRADES,
   HOME_ANCHORS,
+  HOME_HEADER,
   MENU,
   NAV,
   SITE,
@@ -37,6 +39,10 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const [preview, setPreview] = useState<Chapter | undefined>(undefined);
   const printing = pathname === "/resume";
+  const links =
+    pathname === "/"
+      ? NAV.filter((item) => HOME_HEADER.includes(item.href))
+      : NAV;
   const section = HOME_ANCHORS.find((item) => pathname.startsWith(item.path));
   const home = section ? `/#${section.anchor}` : "/";
   const sections = NAV.filter((item) => item.href !== "/resume");
@@ -70,37 +76,44 @@ export default function Nav() {
             {SITE.name}
           </Link>
 
-          <nav className="hidden gap-8 text-[15px] font-medium tracking-[-0.01em] md:flex">
-            {NAV.map((item) => {
-              const active = pathname.startsWith(item.href);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  aria-current={active ? "page" : undefined}
-                  className={`border-b-2 py-3 transition-opacity duration-200 hover:opacity-70 ${
-                    active ? "border-paper" : "border-transparent"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
+          <div className="hidden items-center gap-8 md:flex">
+            <nav className="flex gap-8 text-[15px] font-medium tracking-[-0.01em]">
+              {links.map((item) => {
+                const active = pathname.startsWith(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`border-b-2 py-3 transition-opacity duration-200 hover:opacity-70 ${
+                      active ? "border-paper" : "border-transparent"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+            <span aria-hidden="true" className="h-4 w-px bg-rule" />
+            <SoundToggle />
+          </div>
 
-          <button
-            type="button"
-            className="flex min-h-11 items-center gap-3 text-[15px] font-medium md:hidden"
-            aria-expanded={open}
-            aria-controls="site-menu"
-            onClick={() => setOpen(true)}
-          >
-            <span aria-hidden="true" className="flex flex-col gap-1.5">
-              <span className="block h-0.5 w-6 bg-paper" />
-              <span className="block h-0.5 w-4 self-end bg-paper" />
-            </span>
-            {MENU.open}
-          </button>
+          <div className="flex items-center gap-5 md:hidden">
+            <SoundToggle compact />
+            <button
+              type="button"
+              className="flex min-h-11 items-center gap-3 text-[15px] font-medium"
+              aria-expanded={open}
+              aria-controls="site-menu"
+              onClick={() => setOpen(true)}
+            >
+              <span aria-hidden="true" className="flex flex-col gap-1.5">
+                <span className="block h-0.5 w-6 bg-paper" />
+                <span className="block h-0.5 w-4 self-end bg-paper" />
+              </span>
+              {MENU.open}
+            </button>
+          </div>
         </div>
       </header>
 

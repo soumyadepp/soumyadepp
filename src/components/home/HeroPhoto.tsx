@@ -13,6 +13,9 @@ import { CHAPTERS } from "@/content/site";
  * screens so the subject stays in view. With a mouse, a warm light follows
  * the pointer across the room behind the subject.
  */
+export const PHOTO_FRAME =
+  "absolute top-1/2 left-[min(0px,calc(50vw-0.4*max(100vw,177.78svh,71.2rem)))] aspect-video w-[max(100vw,177.78svh,71.2rem)] -translate-y-1/2";
+
 export default function HeroPhoto() {
   const [intro] = CHAPTERS;
   const ref = useRef<HTMLDivElement>(null);
@@ -40,10 +43,7 @@ export default function HeroPhoto() {
   }, []);
 
   return (
-    <div
-      ref={ref}
-      className="fade absolute top-1/2 left-[min(0px,calc(50vw-0.4*max(100vw,177.78svh,71.2rem)))] aspect-video w-[max(100vw,177.78svh,71.2rem)] -translate-y-1/2"
-    >
+    <div ref={ref} className={`fade ${PHOTO_FRAME}`}>
       <div className="drift absolute inset-0">
         <SubjectPhoto sizes="(min-width: 768px) 100vw, 180svh" priority>
           <div aria-hidden="true" className="spotlight absolute inset-0" />

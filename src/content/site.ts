@@ -35,6 +35,8 @@ export const NAV = [
   { label: "Resume", href: "/resume" },
 ] as const;
 
+export const HOME_HEADER: string[] = ["/resume"];
+
 export const HOME_ANCHORS = [
   { path: "/experience", anchor: "experience" },
   { path: "/projects", anchor: "work" },
@@ -91,7 +93,7 @@ export const CHAPTERS: Chapter[] = [
     name: "Intro",
     href: "/about",
     kicker: "",
-    title: "Messy problems in, calm software out.",
+    title: "Software engineer. Builder. Team lead.",
     line: "I'm Soumyadeep. I ship on Fridays and still sleep well.",
     action: "About me",
     secondary: { label: "Resume", href: "/resume" },
@@ -198,6 +200,20 @@ export const HOME = {
   swipe: "Swipe up",
   next: "Scroll or drag",
   jump: "Go to",
+  thoughts: [
+    "Coffee first, then the bug.",
+    "Why was it working yesterday?",
+    "That meeting could have been a message.",
+    "What was I doing again?",
+    "Was that ping for me?",
+    "Okay, but why does it work now?",
+    "I'll write it down later. I won't.",
+    "Just one more fix, then dinner.",
+    "Who wrote this? Oh. Me.",
+    "Should have said no to that meeting.",
+    "Is it Friday yet?",
+    "I need to drink some water.",
+  ],
 } as const;
 
 export const EXPERIENCE_PAGE = {
@@ -380,6 +396,13 @@ export const RESUME_PAGE = {
 export const CHAPTER_LINKS = {
   previous: "Previous",
   next: "Next",
+} as const;
+
+export const SOUND = {
+  label: "Sound",
+  turnOn: "Turn on ambient sound",
+  turnOff: "Turn off ambient sound",
+  volume: "Volume",
 } as const;
 
 export const MENU = {

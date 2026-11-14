@@ -255,6 +255,60 @@ body {
   animation: nudge 2600ms var(--ease) infinite;
 }
 
+@keyframes thought {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(6px);
+  }
+  10%,
+  86% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-4px);
+    filter: blur(6px);
+  }
+}
+
+@keyframes thought-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.thought {
+  animation: thought 3500ms var(--ease) both;
+}
+
+.thought-float {
+  animation:
+    fade 900ms var(--ease) both,
+    thought-float 6s ease-in-out infinite;
+}
+
+@keyframes sound-bar {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.sound-bar {
+  transform-origin: bottom;
+  animation: sound-bar 1100ms ease-in-out infinite;
+}
+
 .grabbable {
   cursor: grab;
 }
@@ -268,7 +322,9 @@ body {
   .drift,
   .fade,
   .cue-glint,
-  .cue-arrow {
+  .cue-arrow,
+  .thought-float,
+  .sound-bar {
     animation: none;
   }
 }

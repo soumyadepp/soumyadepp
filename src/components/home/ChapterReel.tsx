@@ -5,8 +5,10 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import ContactPanel from "@/components/contact/ContactPanel";
 import HeroPhoto from "@/components/home/HeroPhoto";
+import HeroThoughts from "@/components/home/HeroThoughts";
 import Frame from "@/components/reel/Frame";
 import { CHAPTERS, HOME, type Chapter } from "@/content/site";
+import { playSweep } from "@/lib/ambient";
 
 const WIDE = "(min-width: 768px)";
 const WHEEL_LOCK = 900;
@@ -72,6 +74,7 @@ export default function ChapterReel() {
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
           const index = Number((entry.target as HTMLElement).dataset.index);
+          if (index !== activeRef.current) playSweep();
           activeRef.current = index;
           setActive(index);
           const hash = index === 0 ? "" : `#${anchorOf(index)}`;
@@ -209,6 +212,7 @@ export default function ChapterReel() {
                     aria-hidden="true"
                     className="absolute inset-x-0 bottom-0 h-[78%] bg-linear-to-t from-stage from-40% to-transparent md:h-1/2 md:from-stage/95 md:from-20%"
                   />
+                  {index === 0 && <HeroThoughts />}
 
                   <div
                     className={`wrap relative flex flex-wrap items-end justify-between gap-x-10 gap-y-6 pr-16 pb-10 md:flex-nowrap md:pr-[var(--gutter)] md:pb-32 ${
@@ -264,6 +268,7 @@ export default function ChapterReel() {
                           type="button"
                           aria-label={`${HOME.jump} ${CHAPTERS[index + 1].name}`}
                           onClick={() => jump(index + 1)}
+                          data-sweep
                           className="cue flex min-h-12 cursor-pointer items-center gap-4 text-right"
                         >
                           <span className="flex flex-col items-end gap-1">
@@ -297,6 +302,7 @@ export default function ChapterReel() {
 
       <nav
         aria-label={HOME.chaptersLabel}
+        data-sweep
         className="absolute top-1/2 right-0 z-30 flex -translate-y-1/2 flex-col md:hidden"
       >
         {CHAPTERS.map((chapter, index) => {
@@ -322,6 +328,7 @@ export default function ChapterReel() {
 
       <nav
         aria-label={HOME.chaptersLabel}
+        data-sweep
         className="wrap absolute inset-x-0 bottom-0 z-30 hidden grid-cols-6 gap-x-2 pb-6 md:grid"
       >
         {CHAPTERS.map((chapter, index) => {

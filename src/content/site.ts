@@ -200,6 +200,7 @@ export const HOME = {
   swipe: "Swipe up",
   next: "Scroll or drag",
   jump: "Go to",
+  soundThought: "This little maneuver's gonna cost us 51 years.",
   thoughts: [
     "Coffee first, then the bug.",
     "Why was it working yesterday?",

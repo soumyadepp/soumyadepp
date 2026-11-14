@@ -294,6 +294,7 @@ let on = false;
 let volume = 0.6;
 let wired = false;
 const listeners = new Set<() => void>();
+const starts = new Set<() => void>();
 const STORAGE_KEY = "sound";
 const VOLUME_KEY = "sound-volume";
 const CLICK_NOTES = [523.25, 587.33, 659.25, 783.99, 880.0, 1046.5];
@@ -366,11 +367,19 @@ export function soundOn(): boolean {
 /** Turns sound on or off, and remembers the choice for the next visit. */
 export function setSound(value: boolean): void {
   wire();
+  const switchedOn = value && !on;
   on = value;
   remember(value);
   if (value) void score().start();
   else score().stop();
   emit();
+  if (switchedOn) starts.forEach((listener) => listener());
+}
+
+/** Calls the listener whenever a visitor switches sound on. */
+export function onSoundStart(listener: () => void): () => void {
+  starts.add(listener);
+  return () => starts.delete(listener);
 }
 
 /**

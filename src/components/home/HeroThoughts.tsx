@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { PHOTO_FRAME } from "@/components/home/HeroPhoto";
 import { HOME } from "@/content/site";
+import { onSoundStart } from "@/lib/ambient";
 
 const START_DELAY = 1800;
 const CLOUD =
@@ -11,12 +12,15 @@ const CLOUD =
 /**
  * A thought cloud above the subject's head in the intro photograph, cycling
  * through short jokes. Shown on wide screens only, and held on the first
- * thought when the visitor prefers reduced motion.
+ * thought when the visitor prefers reduced motion. Switching sound on
+ * interrupts the cycle with a line about time.
  */
 export default function HeroThoughts() {
   const [index, setIndex] = useState(0);
   const [started, setStarted] = useState(false);
   const [moving, setMoving] = useState(true);
+  const [cue, setCue] = useState(0);
+  const [cued, setCued] = useState(false);
 
   useEffect(() => {
     const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -26,6 +30,16 @@ export default function HeroThoughts() {
     }, START_DELAY);
     return () => window.clearTimeout(timer);
   }, []);
+
+  useEffect(
+    () =>
+      onSoundStart(() => {
+        setStarted(true);
+        setCued(true);
+        setCue((current) => current + 1);
+      }),
+    [],
+  );
 
   const next = () =>
     setIndex((current) => (current + 1) % HOME.thoughts.length);
@@ -38,11 +52,13 @@ export default function HeroThoughts() {
       {started && (
         <div className="thought-float absolute bottom-[79%] left-[41%]">
           <div
-            key={index}
+            key={cued ? `cue-${cue}` : index}
             onAnimationEnd={(event) => {
-              if (moving && event.target === event.currentTarget) next();
+              if (event.target !== event.currentTarget) return;
+              if (cued) setCued(false);
+              else if (moving) next();
             }}
-            className={`relative ${moving ? "thought" : ""}`}
+            className={`relative ${cued ? "thought thought-long" : moving ? "thought" : ""}`}
           >
             <span className="absolute -bottom-5 left-[14%] h-4 w-5 rounded-[50%] bg-paper" />
             <span className="absolute -bottom-10 left-[6%] h-2.5 w-3 rounded-[50%] bg-paper" />
@@ -53,7 +69,7 @@ export default function HeroThoughts() {
               <path d={CLOUD} className="fill-paper" />
             </svg>
             <p className="absolute inset-0 flex items-center justify-center px-12 text-center text-[16px] leading-snug font-semibold tracking-[-0.01em] text-balance text-stage">
-              {HOME.thoughts[index]}
+              {cued ? HOME.soundThought : HOME.thoughts[index]}
             </p>
           </div>
         </div>

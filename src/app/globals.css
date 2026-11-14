@@ -288,6 +288,10 @@ body {
   animation: thought 3500ms var(--ease) both;
 }
 
+.thought-long {
+  animation-duration: 5000ms;
+}
+
 .thought-float {
   animation:
     fade 900ms var(--ease) both,

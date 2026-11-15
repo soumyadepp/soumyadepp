@@ -3,7 +3,23 @@
 import { useEffect, useState } from "react";
 import { PHOTO_FRAME } from "@/components/home/HeroPhoto";
 import { HOME } from "@/content/site";
-import { onSoundStart } from "@/lib/ambient";
+import { onSoundStart, soundOn } from "@/lib/ambient";
+
+const HINT_KEY = "sound-hint-seen";
+
+function hintSeen(): boolean {
+  try {
+    return window.localStorage.getItem(HINT_KEY) === "1";
+  } catch {
+    return true;
+  }
+}
+
+function markHintSeen(): void {
+  try {
+    window.localStorage.setItem(HINT_KEY, "1");
+  } catch {}
+}
 
 const START_DELAY = 1800;
 const CLOUD =
@@ -13,20 +29,26 @@ const CLOUD =
  * A thought cloud above the subject's head in the intro photograph, cycling
  * through short jokes. Shown on wide screens only, and held on the first
  * thought when the visitor prefers reduced motion. Switching sound on
- * interrupts the cycle with a line about time.
+ * interrupts the cycle with a line about time, and a first visit opens
+ * with a hint that the site has sound.
  */
 export default function HeroThoughts() {
   const [index, setIndex] = useState(0);
   const [started, setStarted] = useState(false);
   const [moving, setMoving] = useState(true);
   const [cue, setCue] = useState(0);
-  const [cued, setCued] = useState(false);
+  const [special, setSpecial] = useState<string | null>(null);
 
   useEffect(() => {
     const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const timer = window.setTimeout(() => {
       setMoving(!calm);
       setStarted(true);
+      if (!soundOn() && !hintSeen()) {
+        markHintSeen();
+        setSpecial(HOME.soundHint);
+        setCue((current) => current + 1);
+      }
     }, START_DELAY);
     return () => window.clearTimeout(timer);
   }, []);
@@ -35,7 +57,7 @@ export default function HeroThoughts() {
     () =>
       onSoundStart(() => {
         setStarted(true);
-        setCued(true);
+        setSpecial(HOME.soundThought);
         setCue((current) => current + 1);
       }),
     [],
@@ -52,13 +74,13 @@ export default function HeroThoughts() {
       {started && (
         <div className="thought-float absolute bottom-[79%] left-[41%]">
           <div
-            key={cued ? `cue-${cue}` : index}
+            key={special ? `cue-${cue}` : index}
             onAnimationEnd={(event) => {
               if (event.target !== event.currentTarget) return;
-              if (cued) setCued(false);
+              if (special) setSpecial(null);
               else if (moving) next();
             }}
-            className={`relative ${cued ? "thought thought-long" : moving ? "thought" : ""}`}
+            className={`relative ${special ? "thought thought-long" : moving ? "thought" : ""}`}
           >
             <span className="absolute -bottom-5 left-[14%] h-4 w-5 rounded-[50%] bg-paper" />
             <span className="absolute -bottom-10 left-[6%] h-2.5 w-3 rounded-[50%] bg-paper" />
@@ -69,7 +91,7 @@ export default function HeroThoughts() {
               <path d={CLOUD} className="fill-paper" />
             </svg>
             <p className="absolute inset-0 flex items-center justify-center px-12 text-center text-[16px] leading-snug font-semibold tracking-[-0.01em] text-balance text-stage">
-              {cued ? HOME.soundThought : HOME.thoughts[index]}
+              {special ?? HOME.thoughts[index]}
             </p>
           </div>
         </div>

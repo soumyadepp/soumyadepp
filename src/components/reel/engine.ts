@@ -480,14 +480,19 @@ export class Reel {
   private stepOrbits(): void {
     const { ctx, width, height } = this;
     const homeX = width * (this.options.focusX ?? 0.6);
-    const homeY = height * (this.options.focusY ?? 0.42);
+    const narrow = width < 640;
+    const homeY = height * (narrow ? 0.32 : (this.options.focusY ?? 0.42));
     const pullX = this.pointer ? (this.pointer.x - homeX) * 0.08 : 0;
     const pullY = this.pointer ? (this.pointer.y - homeY) * 0.08 : 0;
     this.driftX += (pullX - this.driftX) * 0.05;
     this.driftY += (pullY - this.driftY) * 0.05;
-    const x = homeX + this.driftX;
+    const x = narrow ? width / 2 + this.driftX : homeX + this.driftX;
     const y = homeY + this.driftY;
-    const base = Math.min(Math.max(width * 0.1, 58), height * 0.23);
+    const base = Math.min(
+      Math.max(width * 0.1, 58),
+      height * 0.23,
+      width * 0.115,
+    );
     const rings = 6;
     if (this.disk.length === 0) {
       for (let ring = 0; ring < rings; ring += 1) {

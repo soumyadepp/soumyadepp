@@ -200,6 +200,7 @@ export const HOME = {
   swipe: "Swipe up",
   next: "Scroll or drag",
   jump: "Go to",
+  soundHint: "It's better with sound. Top right.",
   soundThought: "This little maneuver's gonna cost us 51 years.",
   thoughts: [
     "Coffee first, then the bug.",
@@ -351,6 +352,15 @@ export const ABOUT_PAGE = {
     { title: "AlgoExpert Certification", issuer: "AlgoExpert" },
     { title: "Foundations of UX Design", issuer: "Google" },
   ],
+} as const;
+
+export const NOT_FOUND = {
+  kicker: "404",
+  title: "This page fell into a black hole.",
+  line: "It may have moved, or it never existed. Either way, it is not coming back.",
+  home: "Back to the overview",
+  work: "See the work",
+  frameLabel: "A black hole with a disk of warm light around it",
 } as const;
 
 export const CONTACT_PAGE = {

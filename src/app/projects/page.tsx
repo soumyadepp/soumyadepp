@@ -40,10 +40,21 @@ export default function WorkPage() {
           >
             <div
               className={`relative aspect-[16/9] overflow-hidden border border-line ${
-                project.screens?.[0].paper ? "bg-paper" : "bg-stage"
+                !project.cover && project.screens?.[0].paper
+                  ? "bg-paper"
+                  : "bg-stage"
               }`}
             >
-              {project.screens ? (
+              {project.cover ? (
+                <Image
+                  src={project.cover}
+                  alt=""
+                  fill
+                  unoptimized
+                  sizes="(min-width: 768px) 28rem, 100vw"
+                  className="tint object-cover transition-transform duration-700 ease-reel group-hover:scale-[1.03]"
+                />
+              ) : project.screens ? (
                 <Image
                   src={project.screens[0].src}
                   alt={project.screens[0].alt}
@@ -90,12 +101,17 @@ export default function WorkPage() {
             href={`/projects/${project.slug}`}
             className="reveal group grid gap-x-6 gap-y-3 border-t border-line py-6 md:grid-cols-[10rem_16rem_1fr_6rem] md:items-center"
           >
-            <div
-              className={`relative aspect-[16/9] overflow-hidden border border-line ${
-                project.screens?.[0].paper ? "bg-paper" : "bg-stage"
-              }`}
-            >
-              {project.screens ? (
+            <div className="relative aspect-[16/9] overflow-hidden border border-line bg-stage">
+              {project.cover ? (
+                <Image
+                  src={project.cover}
+                  alt=""
+                  fill
+                  unoptimized
+                  sizes="(min-width: 768px) 10rem, 100vw"
+                  className="tint object-cover"
+                />
+              ) : project.screens ? (
                 <Image
                   src={project.screens[0].src}
                   alt={project.screens[0].alt}

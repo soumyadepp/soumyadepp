@@ -23,6 +23,7 @@ export type Project = {
   mode: ReelMode;
   grade: string;
   frameLabel: string;
+  cover?: string;
   screens?: Screen[];
   post?: string;
   github?: string;
@@ -33,6 +34,7 @@ export const projects: Project[] = [
   {
     slug: "popsub",
     name: "PopSub",
+    cover: "/images/blog/building-popsub/cover.svg",
     summary:
       "A real-time pub/sub server over WebSockets with topic routing and at-least-once delivery.",
     why: "Developers who need reliable message distribution often do not need the operations that come with a full message platform. PopSub is one self-contained process for edge deployments and local development.",
@@ -203,6 +205,7 @@ export const projects: Project[] = [
   {
     slug: "format-benchmark",
     name: "Format benchmark",
+    cover: "/images/projects/format-benchmark/cover.svg",
     summary:
       "Measures how language models respond when given the same data in different formats.",
     why: "The format you hand a model changes what it costs and how well it answers. This toolkit measures that difference instead of guessing.",

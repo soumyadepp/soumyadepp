@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import BlogMarkdown from "@/components/BlogMarkdown";
 import Crumb from "@/components/layout/Crumb";
 import Frame from "@/components/reel/Frame";
-import { GRADES, SITE, WRITING_PAGE } from "@/content/site";
+import { GRADES, WRITING_PAGE } from "@/content/site";
 import { formatDay, getAllBlogs, getBlogBySlug } from "@/lib/blogs";
 
 type Props = {
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getBlogBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} | ${SITE.fullName}`,
+    title: post.title,
     description: post.excerpt,
   };
 }

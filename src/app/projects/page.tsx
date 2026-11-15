@@ -4,11 +4,11 @@ import Link from "next/link";
 import ChapterLinks from "@/components/layout/ChapterLinks";
 import PageHero from "@/components/layout/PageHero";
 import Frame from "@/components/reel/Frame";
-import { CHAPTERS, GRADES, SITE, WORK_PAGE } from "@/content/site";
+import { CHAPTERS, GRADES, WORK_PAGE } from "@/content/site";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: `Work | ${SITE.fullName}`,
+  title: "Work",
   description: WORK_PAGE.note,
 };
 

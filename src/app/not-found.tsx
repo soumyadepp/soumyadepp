@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Frame from "@/components/reel/Frame";
-import { GRADES, NOT_FOUND, SITE } from "@/content/site";
+import { GRADES, NOT_FOUND } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: `${NOT_FOUND.kicker} | ${SITE.fullName}`,
+  title: NOT_FOUND.kicker,
 };
 
 /**

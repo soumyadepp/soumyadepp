@@ -3,11 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import ChapterLinks from "@/components/layout/ChapterLinks";
 import PageHero from "@/components/layout/PageHero";
-import { CHAPTERS, GRADES, SITE, WRITING_PAGE } from "@/content/site";
+import { CHAPTERS, GRADES, WRITING_PAGE } from "@/content/site";
 import { formatMonth, getAllBlogs } from "@/lib/blogs";
 
 export const metadata: Metadata = {
-  title: `Writing | ${SITE.fullName}`,
+  title: "Writing",
   description: WRITING_PAGE.title,
 };
 

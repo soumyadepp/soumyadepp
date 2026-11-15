@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/layout/PageHero";
-import { GRADES, SITE, TALKS_PAGE } from "@/content/site";
+import { GRADES, TALKS_PAGE } from "@/content/site";
 import { talks } from "@/data/talks";
 
 type Props = {
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const talk = talks.find((item) => item.id === id);
   if (!talk) return {};
   return {
-    title: `${talk.title} | ${SITE.fullName}`,
+    title: talk.title,
     description: talk.description,
   };
 }

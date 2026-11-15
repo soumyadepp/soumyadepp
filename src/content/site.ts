@@ -16,6 +16,8 @@ export const SITE = {
   name: "Soumyadeep",
   fullName: "Soumyadeep Ghosh",
   role: "Software Engineer",
+  url: "https://www.soumyadepp.com",
+  location: "Ahmedabad, India",
   title: "Soumyadeep Ghosh | Software Engineer",
   description:
     "Soumyadeep Ghosh is a software engineer working across backend, frontend and cloud. Founding engineer on a building design product, and now its engineering lead.",
@@ -386,7 +388,7 @@ export const CONTACT_PAGE = {
       subject: "About your project",
     },
   ],
-  place: "Ahmedabad, India",
+  place: SITE.location,
   timeZone: "Asia/Kolkata",
   localTime: "local time",
   copy: "Copy email",

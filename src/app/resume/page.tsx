@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PrintButton from "@/components/resume/PrintButton";
-import { CRUMB, RESUME_PAGE, SITE } from "@/content/site";
+import { CRUMB, RESUME_PAGE } from "@/content/site";
 import { resume } from "@/data/resume";
 
 export const metadata: Metadata = {
-  title: `Resume | ${SITE.fullName}`,
+  title: "Resume",
   description: resume.summary,
 };
 

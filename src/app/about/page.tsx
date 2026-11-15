@@ -4,11 +4,11 @@ import Link from "next/link";
 import ContactPanel from "@/components/contact/ContactPanel";
 import PageHero from "@/components/layout/PageHero";
 import SubjectPhoto from "@/components/photo/SubjectPhoto";
-import { ABOUT_PAGE, GRADES, SITE } from "@/content/site";
+import { ABOUT_PAGE, GRADES } from "@/content/site";
 import { talks } from "@/data/talks";
 
 export const metadata: Metadata = {
-  title: `About | ${SITE.fullName}`,
+  title: "About",
   description: ABOUT_PAGE.lead,
 };
 

@@ -7,12 +7,11 @@ import {
   COMPANY_ORBITS,
   EXPERIENCE_PAGE,
   GRADES,
-  SITE,
 } from "@/content/site";
 import { earlierRoles, engagements } from "@/data/experience";
 
 export const metadata: Metadata = {
-  title: `Experience | ${SITE.fullName}`,
+  title: "Experience",
   description: EXPERIENCE_PAGE.title,
 };
 

@@ -1,8 +1,17 @@
+import { SITE, SOCIALS } from "@/content/site";
+import { engagements } from "@/data/experience";
+
 export type ResumeRole = {
   title: string;
   company: string;
   location: string;
   period: string;
+  bullets: string[];
+};
+
+type RoleSource = {
+  company: string;
+  positions: string[];
   bullets: string[];
 };
 
@@ -13,55 +22,95 @@ export type ResumeProject = {
   bullets: string[];
 };
 
+/**
+ * Builds a resume role from the experience data, so titles, places and
+ * dates are written once.
+ *
+ * Args:
+ *   source: The company, the position titles the role covers and the
+ *     resume bullets for it.
+ *
+ * Returns:
+ *   The role, titled after its latest position and dated from the first
+ *   position's start to the latest position's end.
+ *
+ * Raises:
+ *   Error: When the company or a position is missing from the experience
+ *     data.
+ */
+function roleFrom(source: RoleSource): ResumeRole {
+  const engagement = engagements.find(
+    (item) => item.company === source.company,
+  );
+  if (!engagement) throw new Error(`Unknown company: ${source.company}`);
+  const covered = engagement.positions.filter((position) =>
+    source.positions.includes(position.title),
+  );
+  if (covered.length !== source.positions.length) {
+    throw new Error(`Unknown position at ${source.company}`);
+  }
+  const latest = covered[0];
+  const first = covered[covered.length - 1];
+  const [start] = first.period.split(PERIOD_JOIN);
+  const [, end] = latest.period.split(PERIOD_JOIN);
+  return {
+    title: latest.title,
+    company: engagement.company,
+    location: `${engagement.location}, ${COUNTRY}`,
+    period: `${start}${PERIOD_JOIN}${end === "now" ? "Present" : end}`,
+    bullets: source.bullets,
+  };
+}
+
+function linkTo(href: string): { label: string; href: string } {
+  return {
+    label: href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""),
+    href,
+  };
+}
+
+const PERIOD_JOIN = " to ";
+const COUNTRY = "India";
+const PROFILES = SOCIALS.filter(
+  (social) => social.icon === "github" || social.icon === "linkedin",
+);
+
 export const resume = {
-  name: "Soumyadeep Ghosh",
-  title: "Software Engineer",
-  location: "Ahmedabad, India",
-  email: "ghoshsoumyadeep330@gmail.com",
-  links: [
-    { label: "github.com/soumyadepp", href: "https://github.com/soumyadepp" },
-    {
-      label: "linkedin.com/in/soumyadeep-ghosh-90a1951b6",
-      href: "https://www.linkedin.com/in/soumyadeep-ghosh-90a1951b6/",
-    },
-    { label: "soumyadepp.vercel.app", href: "https://soumyadepp.vercel.app" },
-  ],
+  name: SITE.fullName,
+  title: SITE.role,
+  location: SITE.location,
+  email: SITE.email,
+  links: [...PROFILES.map((social) => linkTo(social.href)), linkTo(SITE.url)],
   summary:
     "Software engineer with 3+ years of full-time experience building and shipping production systems across building design (AEC), mental health, IoT and logistics. Currently leads full-stack development of an early-stage SaaS product, from architecture to deployment. Works across backend, frontend and cloud infrastructure.",
   roles: [
-    {
-      title: "Software Engineer 2",
+    roleFrom({
       company: "Infocusp Innovations",
-      location: "Ahmedabad, India",
-      period: "Jul 2025 to Present",
+      positions: ["Software Engineer 2"],
       bullets: [
         "Lead full-stack development of an early-stage AEC SaaS product from ideation to production, covering backend architecture, data models and deployment.",
         "Designed backend services in Python and FastAPI on Google Cloud Run, with Cloud Firestore, PostgreSQL and BigQuery for application and geospatial data.",
         "Established system design patterns, code review and sprint planning practices adopted across the engineering team, and mentored engineers.",
         "Worked across backend, React and TypeScript frontend, Terraform infrastructure and AI features, with domain experts, product managers and design.",
       ],
-    },
-    {
-      title: "Software Engineer 1",
+    }),
+    roleFrom({
       company: "Infocusp Innovations",
-      location: "Ahmedabad, India",
-      period: "Jul 2023 to Jun 2025",
+      positions: ["Associate Software Engineer", "Software Engineer 1"],
       bullets: [
         "Built RESTful backend services and full-stack features for a mental health and habit tracking application using TypeScript and Node.js.",
         "Owned features end to end, from technical design and implementation to automated testing and production deployment on Google Cloud.",
         "Developed connected-device systems for a smart bed manufacturer, integrating with hardware data pipelines and delivering high-reliability features.",
       ],
-    },
-    {
-      title: "Software Engineer",
+    }),
+    roleFrom({
       company: "Shipmnts",
-      location: "Ahmedabad, India",
-      period: "Jun 2022 to Nov 2022",
+      positions: ["Software Engineer"],
       bullets: [
         "Built and shipped features for a B2B logistics and shipment tracking platform, improving visibility across supply chain workflows.",
         "Implemented real-time data processing and tracking on the core platform, used in production by business clients.",
       ],
-    },
+    }),
   ] satisfies ResumeRole[],
   projects: [
     {

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import ContactPanel from "@/components/contact/ContactPanel";
-import { CONTACT_PAGE, SITE } from "@/content/site";
+import { CONTACT_PAGE } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: `Contact | ${SITE.fullName}`,
+  title: "Contact",
   description: CONTACT_PAGE.title,
 };
 

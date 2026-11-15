@@ -3,11 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import ChapterLinks from "@/components/layout/ChapterLinks";
 import PageHero from "@/components/layout/PageHero";
-import { CHAPTERS, GRADES, SITE, TALKS_PAGE } from "@/content/site";
+import { CHAPTERS, GRADES, TALKS_PAGE } from "@/content/site";
 import { talks } from "@/data/talks";
 
 export const metadata: Metadata = {
-  title: `Talks | ${SITE.fullName}`,
+  title: "Talks",
   description: TALKS_PAGE.title,
 };
 

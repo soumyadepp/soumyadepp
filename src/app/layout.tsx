@@ -11,8 +11,16 @@ const host = Host_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: SITE.title,
+  metadataBase: new URL(SITE.url),
+  title: { default: SITE.title, template: `%s | ${SITE.fullName}` },
   description: SITE.description,
+  openGraph: {
+    type: "website",
+    siteName: SITE.fullName,
+    title: SITE.title,
+    description: SITE.description,
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({

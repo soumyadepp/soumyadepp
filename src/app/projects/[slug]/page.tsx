@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/layout/PageHero";
-import { SITE, WORK_PAGE } from "@/content/site";
+import { WORK_PAGE } from "@/content/site";
 import { getProject, projects } from "@/data/projects";
 
 type Props = {
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject(slug);
   if (!project) return {};
   return {
-    title: `${project.name} | ${SITE.fullName}`,
+    title: project.name,
     description: project.summary,
   };
 }

@@ -5,6 +5,7 @@ export type ReelMode =
   | "broker"
   | "spiral"
   | "hole"
+  | "signal"
   | "ripples"
   | "contours"
   | "orbits"
@@ -36,6 +37,10 @@ type Arc = {
 };
 
 type Star = { x: number; y: number; size: number };
+
+type Pulse = { t: number; speed: number; lane: number; outbound: boolean };
+
+type Echo = { mine: boolean; age: number };
 
 const STAGE = "5,6,7";
 const TAU = Math.PI * 2;
@@ -76,13 +81,17 @@ const CONTOUR_EDGES: number[][][] = [
 ];
 const ORBIT_SQUASH = 0.36;
 const ORBIT_LEAN = -0.2;
+const SIGNAL_LANES = [0.22, 0.34, 0.46];
+const SIGNAL_TAIL = 0.14;
+const ECHO_LIFE = 80;
 
 /**
  * Draws the live frames used across the site onto a 2D canvas.
  *
  * Each mode renders light trails that describe a system: lanes for roles,
- * a broker for pub/sub, a spiral for talks, text rows for writing, and an
- * accretion disk for the contact chapter.
+ * a broker for pub/sub, a spiral for talks, waves for writing, two points
+ * trading signals for the contact chapter, and a black hole for the page
+ * that does not exist.
  */
 export class Reel {
   private readonly canvas: HTMLCanvasElement;
@@ -102,6 +111,10 @@ export class Reel {
   private rings: number[] = [];
   private driftX = 0;
   private driftY = 0;
+  private pulses: Pulse[] = [];
+  private echoes: Echo[] = [];
+  private speaker = true;
+  private pause = 40;
 
   constructor(canvas: HTMLCanvasElement, options: ReelOptions) {
     const ctx = canvas.getContext("2d");
@@ -132,6 +145,8 @@ export class Reel {
       this.disk = [];
       this.halo = [];
       this.rings = [];
+      this.pulses = [];
+      this.echoes = [];
       this.clear();
     }
   }
@@ -174,6 +189,8 @@ export class Reel {
     this.disk = [];
     this.halo = [];
     this.rings = [];
+    this.pulses = [];
+    this.echoes = [];
     this.clear();
   }
 
@@ -226,6 +243,10 @@ export class Reel {
     }
     if (this.options.mode === "hole") {
       this.stepHole();
+      return;
+    }
+    if (this.options.mode === "signal") {
+      this.stepSignal();
       return;
     }
     if (this.options.mode === "ripples") {
@@ -837,5 +858,152 @@ export class Reel {
     ctx.shadowBlur = 0;
 
     this.drawDisk(front, x, y, radius);
+  }
+
+  private sendMessage(): void {
+    const count = 2 + Math.floor(Math.random() * 4);
+    const lane = Math.floor(Math.random() * SIGNAL_LANES.length);
+    const speed = 0.0075 + Math.random() * 0.0025;
+    for (let i = 0; i < count; i += 1) {
+      this.pulses.push({
+        t: -i * (0.05 + Math.random() * 0.05),
+        speed,
+        lane: Math.random() < 0.7 ? lane : (lane + 1) % SIGNAL_LANES.length,
+        outbound: this.speaker,
+      });
+    }
+    this.speaker = !this.speaker;
+    this.pause = 50 + Math.random() * 70;
+  }
+
+  private drawNode(x: number, y: number, mine: boolean): void {
+    const { ctx } = this;
+    const glow = ctx.createRadialGradient(x, y, 0, x, y, 46);
+    const tone = mine ? this.options.grade : "238,240,242";
+    glow.addColorStop(0, `rgba(${tone},0.16)`);
+    glow.addColorStop(1, `rgba(${tone},0)`);
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(x, y, 46, 0, TAU);
+    ctx.fill();
+    ctx.strokeStyle = `rgba(${tone},0.28)`;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(x, y, 11, 0, TAU);
+    ctx.stroke();
+    ctx.fillStyle = mine ? "rgba(255,246,232,0.95)" : "rgba(238,240,242,0.9)";
+    ctx.beginPath();
+    ctx.arc(x, y, mine ? 4 : 3.5, 0, TAU);
+    ctx.fill();
+  }
+
+  private stepSignal(): void {
+    const { ctx, width, height, time } = this;
+    const narrow = width < 640;
+    const midX = width * (this.options.focusX ?? 0.6);
+    const midY = height * (this.options.focusY ?? 0.42);
+    const span = Math.min(width * (narrow ? 0.58 : 0.3), 480);
+    const homeX = midX - span / 2;
+    const homeY = midY + span * 0.1;
+    const pullX = this.pointer
+      ? (this.pointer.x - homeX) * 0.35
+      : Math.sin(time * 0.35) * 10;
+    const pullY = this.pointer
+      ? (this.pointer.y - homeY) * 0.35
+      : Math.cos(time * 0.45) * 8;
+    this.driftX += (pullX - this.driftX) * 0.05;
+    this.driftY += (pullY - this.driftY) * 0.05;
+    const youX = homeX + this.driftX;
+    const youY = homeY + this.driftY;
+    const meX = midX + span / 2 + Math.sin(time * 0.4) * 4;
+    const meY = midY - span * 0.1 + Math.cos(time * 0.5) * 4;
+    const crestX = (meX + youX) / 2;
+    const crestY = Math.min(meY, youY);
+    const along = (lane: number, outbound: boolean, t: number) => {
+      const controlY = crestY - SIGNAL_LANES[lane] * span;
+      const fromX = outbound ? meX : youX;
+      const fromY = outbound ? meY : youY;
+      const toX = outbound ? youX : meX;
+      const toY = outbound ? youY : meY;
+      const rest = 1 - t;
+      return [
+        rest * rest * fromX + 2 * rest * t * crestX + t * t * toX,
+        rest * rest * fromY + 2 * rest * t * controlY + t * t * toY,
+      ];
+    };
+
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = `rgb(${STAGE})`;
+    ctx.fillRect(0, 0, width, height);
+    ctx.globalCompositeOperation = "lighter";
+    this.drawStars(0.3);
+
+    ctx.lineWidth = 1;
+    SIGNAL_LANES.forEach((lift, lane) => {
+      ctx.strokeStyle = `rgba(${this.options.grade},${(0.16 - lane * 0.03).toFixed(3)})`;
+      ctx.beginPath();
+      ctx.moveTo(meX, meY);
+      ctx.quadraticCurveTo(crestX, crestY - lift * span, youX, youY);
+      ctx.stroke();
+    });
+
+    if (this.pulses.length === 0) {
+      this.pause -= 1;
+      if (this.pause <= 0) this.sendMessage();
+    }
+    const flying: Pulse[] = [];
+    for (const pulse of this.pulses) {
+      pulse.t += pulse.speed;
+      if (pulse.t >= 1) {
+        this.echoes.push({ mine: !pulse.outbound, age: 0 });
+        continue;
+      }
+      flying.push(pulse);
+      if (pulse.t <= 0) continue;
+      const tail = Math.max(0, pulse.t - SIGNAL_TAIL);
+      const steps = 10;
+      ctx.lineWidth = 1.6;
+      let [lastX, lastY] = along(pulse.lane, pulse.outbound, tail);
+      for (let k = 1; k <= steps; k += 1) {
+        const [x, y] = along(
+          pulse.lane,
+          pulse.outbound,
+          tail + ((pulse.t - tail) * k) / steps,
+        );
+        ctx.strokeStyle = `rgba(${this.options.grade},${((0.75 * k) / steps).toFixed(3)})`;
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        lastX = x;
+        lastY = y;
+      }
+      ctx.fillStyle = "rgba(255,246,232,0.95)";
+      ctx.beginPath();
+      ctx.arc(lastX, lastY, 2, 0, TAU);
+      ctx.fill();
+    }
+    this.pulses = flying;
+
+    this.echoes = this.echoes.filter((echo) => {
+      echo.age += 1;
+      if (echo.age > ECHO_LIFE) return false;
+      const fade = 1 - echo.age / ECHO_LIFE;
+      ctx.strokeStyle = `rgba(${this.options.grade},${(0.5 * fade * fade).toFixed(3)})`;
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.arc(
+        echo.mine ? meX : youX,
+        echo.mine ? meY : youY,
+        11 + echo.age * 0.7,
+        0,
+        TAU,
+      );
+      ctx.stroke();
+      return true;
+    });
+
+    this.drawNode(youX, youY, false);
+    this.drawNode(meX, meY, true);
   }
 }

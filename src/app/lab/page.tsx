@@ -11,7 +11,8 @@ const SAMPLES: { mode: ReelMode; label: string; grade: string }[] = [
   { mode: "waves", label: "Waves (Writing, new)", grade: GRADES.paper },
   { mode: "contours", label: "Contours (About, new)", grade: GRADES.tungsten },
   { mode: "flow", label: "Flow (old About)", grade: GRADES.tungsten },
-  { mode: "hole", label: "Black hole (Contact)", grade: GRADES.tungsten },
+  { mode: "signal", label: "Signal (Contact)", grade: GRADES.tungsten },
+  { mode: "hole", label: "Black hole (404)", grade: GRADES.tungsten },
 ];
 
 /**

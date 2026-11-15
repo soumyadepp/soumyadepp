@@ -15,7 +15,7 @@ const CHIP =
 
 /**
  * The contact screen: the email address, socials and reasons to write, over
- * the black hole frame. The same layout is used on the contact page, at the
+ * the signal frame. The same layout is used on the contact page, at the
  * foot of the about page and as the last chapter of the home reel.
  *
  * Args:
@@ -61,7 +61,7 @@ export default function ContactPanel({ variant = "page" }: ContactPanelProps) {
       className={`relative flex flex-col justify-end overflow-hidden ${height}`}
     >
       <Frame
-        mode="hole"
+        mode="signal"
         grade={GRADES.tungsten}
         label={CONTACT_PAGE.frameLabel}
         focusX={0.5}
@@ -69,7 +69,7 @@ export default function ContactPanel({ variant = "page" }: ContactPanelProps) {
         className={`lg:hidden ${reel ? "max-lg:h-[44svh]" : "max-lg:h-[54svh]"}`}
       />
       <Frame
-        mode="hole"
+        mode="signal"
         grade={GRADES.tungsten}
         label={CONTACT_PAGE.frameLabel}
         focusX={0.72}

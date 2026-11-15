@@ -184,9 +184,9 @@ export const CHAPTERS: Chapter[] = [
     title: "Let's talk.",
     line: SITE.email,
     action: "Contact me",
-    mode: "hole",
+    mode: "signal",
     grade: GRADES.tungsten,
-    frameLabel: "A black hole with a disk of warm light around it",
+    frameLabel: "Two points of light trading signals across the dark",
   },
 ];
 
@@ -391,7 +391,7 @@ export const CONTACT_PAGE = {
   localTime: "local time",
   copy: "Copy email",
   copied: "Copied",
-  frameLabel: "A black hole with a disk of warm light around it",
+  frameLabel: "Two points of light trading signals across the dark",
 } as const;
 
 export const RESUME_PAGE = {

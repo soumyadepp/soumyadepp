@@ -19,11 +19,12 @@ export type Talk = {
 export const talks: Talk[] = [
   {
     id: "charusat-stl",
-    title: "The C++ Standard Template Library, from the Inside",
-    event: "Guest Session",
+    title: "Introduction to STL",
+    event: "Charusat Session",
     venue: "Charusat University, Anand",
     date: "2026",
     audience: "Engineering students learning C++ and data structures",
+    duration: "120 minutes",
     topics: ["C++", "STL", "Data Structures", "Algorithms"],
     description:
       "A session on the C++ Standard Template Library that went past using vector, map and set, into how they work and why each operation costs what it does.",

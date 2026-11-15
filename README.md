@@ -4,15 +4,11 @@
 
 <br>
 
-### Hi, I'm Soumyadeep.
+### Hey, I'm Soumyadeep.
 
-I turn "it works on my machine" into "it works." Every few months I also explain the STL to a room full of students who did not ask for this.
+I build products end to end, from the database schema to the button you click, and I have opinions about both.
 
-Cargo that moves, beds that rest, minds that heal, buildings that stand. I've written software for all four. Right now it's the buildings: a design product at [Infocusp](https://www.infocusp.com) that I joined when it was a blank page and an empty repo. These days I get to decide what its data looks like, which is the closest thing an engineer has to real power.
-
-I started on the frontend, wandered into the backend, and never found my way back. I'm told this is common.
-
-For the skimmers: 3 years of shipping, 700+ LeetCode problems (for fun, I promise), 4 university talks, and one spelling bee world final in Abu Dhabi in 2012. Peaked early.
+My day job is a building design platform I've worked on since its first commit. The side projects below are where I try the ideas my day job would never approve.
 
 ## Things I built because nobody stopped me
 
@@ -53,39 +49,6 @@ For the skimmers: 3 years of shipping, 700+ LeetCode problems (for fun, I promis
 
 Also lying around: a [benchmark](https://github.com/soumyadepp/benchmark-json-toon-vsc) that measures whether JSON, TOON or VSC is cheaper to feed a language model (it matters more than you'd think), and a [system design repo](https://github.com/soumyadepp/grok-system-design) where people submit designs and other people politely tear them apart.
 
-## Writing
+## Elsewhere
 
-I write when something finally clicks, so the next person gets there faster.
-
-- [The hidden line item on your AI bill](https://soumyadepp.com/blogs/the-hidden-line-item-on-your-ai-bill)
-- [Building PopSub: a pub/sub broker small enough to read in an afternoon](https://soumyadepp.com/blogs/building-popsub)
-- [The borrow checker isn't your enemy. It's the senior dev you never had.](https://soumyadepp.com/blogs/understanding-rust-ownership)
-- [Why your code doesn't need to be fast, yet](https://soumyadepp.com/blogs/why-your-code-doesnt-need-to-be-fast-yet)
-- [What every Python developer should know about `__slots__`](https://soumyadepp.com/blogs/python-slots-memory-optimization)
-
-## On stage
-
-I go back to colleges to teach what I wish someone had taught me. Here is the evidence.
-
-| Talk | Where | |
-|---|---|---|
-| [Introduction to STL](https://soumyadepp.com/talks/charusat-stl) | Charusat University | 2026 |
-| [Cloud basics, AWS and chaos engineering](https://soumyadepp.com/talks/ddu-cloud) | Dharmsinh Desai University | 2026 |
-| [Problem solving, DSA and interview prep](https://soumyadepp.com/talks/cspit-dsa) | Charusat University | 2025 |
-| [Competitive programming](https://soumyadepp.com/talks/cspit-cp) | Charusat University | 2025 |
-
-I also hosted TEDxPrahladnagar, which is where I learned to hold a room and a microphone at the same time.
-
-## What I reach for
-
-**Backend** &nbsp; Python, FastAPI, Rust, Node.js, Ruby on Rails<br>
-**Frontend** &nbsp; TypeScript, React, Next.js, Svelte, Flutter<br>
-**Cloud** &nbsp; Google Cloud Run, Firestore, BigQuery, AWS, Docker, Terraform
-
-## Say hello
-
-Email works best. I read everything, and I answer the interesting ones first.
-
-[soumyadepp.com](https://soumyadepp.com) · [LinkedIn](https://www.linkedin.com/in/soumyadeep-ghosh-90a1951b6/) · [ghoshsoumyadeep330@gmail.com](mailto:ghoshsoumyadeep330@gmail.com)
-
-<sub>Off the clock: guitar, keyboard, basketball, cricket, sketches I don't show anyone, and recipes I have no business attempting.</sub>
+[soumyadepp.com](https://soumyadepp.com) · [Writing](https://soumyadepp.com/blogs) · [LinkedIn](https://www.linkedin.com/in/soumyadeep-ghosh-90a1951b6/) · [Email](mailto:ghoshsoumyadeep330@gmail.com)

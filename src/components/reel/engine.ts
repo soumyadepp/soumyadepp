@@ -1,12 +1,10 @@
 export type ReelMode =
   | "none"
   | "pull"
-  | "flow"
   | "broker"
   | "spiral"
   | "hole"
   | "signal"
-  | "ripples"
   | "contours"
   | "orbits"
   | "waves";
@@ -108,7 +106,6 @@ export class Reel {
   private halo: Arc[] = [];
   private pointer: { x: number; y: number } | null = null;
   private badges: { image: HTMLImageElement; weight: number }[] = [];
-  private rings: number[] = [];
   private driftX = 0;
   private driftY = 0;
   private pulses: Pulse[] = [];
@@ -144,7 +141,6 @@ export class Reel {
       this.particles = [];
       this.disk = [];
       this.halo = [];
-      this.rings = [];
       this.pulses = [];
       this.echoes = [];
       this.clear();
@@ -188,7 +184,6 @@ export class Reel {
     this.stars = [];
     this.disk = [];
     this.halo = [];
-    this.rings = [];
     this.pulses = [];
     this.echoes = [];
     this.clear();
@@ -247,10 +242,6 @@ export class Reel {
     }
     if (this.options.mode === "signal") {
       this.stepSignal();
-      return;
-    }
-    if (this.options.mode === "ripples") {
-      this.stepRipples();
       return;
     }
     if (this.options.mode === "orbits") {
@@ -357,12 +348,6 @@ export class Reel {
       vy =
         ((dy / distance) * 0.34 + (dx / distance) * 0.94) * speed * ORBIT_TILT;
       arrived = distance < width * 0.025;
-    } else if (mode === "flow") {
-      const angle =
-        Math.sin(particle.x * 0.004 + this.time * 0.2) +
-        Math.cos(particle.y * 0.006 - this.time * 0.15);
-      vx = Math.cos(angle * 1.6) * 1.4 + 0.7;
-      vy = Math.sin(angle * 1.6) * 1.1;
     } else if (mode === "broker") {
       vx = 2.4;
       vy =
@@ -456,45 +441,6 @@ export class Reel {
     ctx.fillStyle = "rgba(255,244,230,0.12)";
     ctx.beginPath();
     ctx.arc(x, y, 3.5, 0, TAU);
-    ctx.fill();
-  }
-
-  private stepRipples(): void {
-    const { ctx, width, height } = this;
-    const reach = Math.hypot(width, height) * 0.62;
-    const homeX = width * (this.options.focusX ?? 0.5);
-    const homeY = height * (this.options.focusY ?? 0.46);
-    const pullX = this.pointer ? (this.pointer.x - homeX) * 0.12 : 0;
-    const pullY = this.pointer ? (this.pointer.y - homeY) * 0.12 : 0;
-    this.driftX += (pullX - this.driftX) * 0.05;
-    this.driftY += (pullY - this.driftY) * 0.05;
-    const x = homeX + this.driftX;
-    const y = homeY + this.driftY;
-
-    if (this.rings.length === 0) {
-      for (let radius = 0; radius < reach; radius += 54)
-        this.rings.push(radius);
-    }
-    ctx.globalCompositeOperation = "source-over";
-    ctx.fillStyle = `rgb(${STAGE})`;
-    ctx.fillRect(0, 0, width, height);
-    ctx.globalCompositeOperation = "lighter";
-    this.drawStars(0.35);
-    for (let i = 0; i < this.rings.length; i += 1) {
-      this.rings[i] += 0.45;
-      if (this.rings[i] > reach) this.rings[i] -= reach;
-      const radius = this.rings[i];
-      const strength = 1 - radius / reach;
-      const wobble = 1 + 0.05 * Math.sin(this.time * 0.8 + radius * 0.02);
-      ctx.strokeStyle = `rgba(${this.options.grade},${(0.7 * strength * strength).toFixed(3)})`;
-      ctx.lineWidth = 0.8 + 2.2 * strength;
-      ctx.beginPath();
-      ctx.ellipse(x, y, radius * wobble, radius * 0.55, 0, 0, TAU);
-      ctx.stroke();
-    }
-    ctx.fillStyle = "rgba(255,250,240,0.9)";
-    ctx.beginPath();
-    ctx.arc(x, y, 3, 0, TAU);
     ctx.fill();
   }
 

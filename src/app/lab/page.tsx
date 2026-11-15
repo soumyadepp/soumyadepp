@@ -7,10 +7,8 @@ const SAMPLES: { mode: ReelMode; label: string; grade: string }[] = [
   { mode: "orbits", label: "Orbits (Experience, new)", grade: GRADES.tungsten },
   { mode: "broker", label: "Broker (Projects, PopSub)", grade: GRADES.sodium },
   { mode: "spiral", label: "Spiral (Talks, current)", grade: GRADES.moss },
-  { mode: "ripples", label: "Ripples (new, unused)", grade: GRADES.moss },
   { mode: "waves", label: "Waves (Writing, new)", grade: GRADES.paper },
   { mode: "contours", label: "Contours (About, new)", grade: GRADES.tungsten },
-  { mode: "flow", label: "Flow (old About)", grade: GRADES.tungsten },
   { mode: "signal", label: "Signal (Contact)", grade: GRADES.tungsten },
   { mode: "hole", label: "Black hole (404)", grade: GRADES.tungsten },
 ];

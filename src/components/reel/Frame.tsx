@@ -50,8 +50,9 @@ export default function Frame({
     });
     resize.observe(canvas);
 
+    let visible = false;
     const visibility = new IntersectionObserver((entries) => {
-      const visible = entries[entries.length - 1].isIntersecting;
+      visible = entries[entries.length - 1].isIntersecting;
       if (calm) return;
       if (visible) reel.start();
       else reel.stop();
@@ -61,7 +62,7 @@ export default function Frame({
     if (calm) reel.still();
 
     const onPointer = (event: PointerEvent) => {
-      if (event.pointerType !== "mouse") return;
+      if (event.pointerType !== "mouse" || !visible) return;
       const box = canvas.getBoundingClientRect();
       const x = event.clientX - box.left;
       const y = event.clientY - box.top;

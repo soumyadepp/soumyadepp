@@ -4,7 +4,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/layout/PageHero";
 import { GRADES, TALKS_PAGE } from "@/content/site";
+import JsonLd from "@/components/JsonLd";
 import { talks } from "@/data/talks";
+import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -18,10 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const talk = talks.find((item) => item.id === id);
   if (!talk) return {};
-  return {
+  return pageMetadata({
     title: talk.title,
     description: talk.description,
-  };
+    path: `/talks/${talk.id}`,
+  });
 }
 
 export default async function TalkPage({ params }: Props) {
@@ -31,6 +34,14 @@ export default async function TalkPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { label: TALKS_PAGE.kicker, path: "/talks" },
+            { label: talk.title, path: `/talks/${talk.id}` },
+          ]),
+        ]}
+      />
       <PageHero
         anchor="talks"
         parent={{ label: TALKS_PAGE.kicker, href: "/talks" }}

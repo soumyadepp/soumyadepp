@@ -161,6 +161,7 @@ export default function ChapterReel() {
         {CHAPTERS.map((chapter, index) => {
           const current = index === active;
           const last = index === CHAPTERS.length - 1;
+          const Heading = index === 0 ? "h1" : "h2";
           return (
             <section
               key={chapter.number}
@@ -228,7 +229,7 @@ export default function ChapterReel() {
                       {chapter.kicker && (
                         <p className="t-label text-quiet">{chapter.kicker}</p>
                       )}
-                      <h2 className="t-title">{chapter.title}</h2>
+                      <Heading className="t-title">{chapter.title}</Heading>
                       <p className="t-lead break-words text-body">
                         {chapter.line}
                       </p>

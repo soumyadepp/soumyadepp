@@ -19,8 +19,17 @@ export const metadata: Metadata = {
     siteName: SITE.fullName,
     title: SITE.title,
     description: SITE.description,
+    locale: SITE.locale,
   },
   twitter: { card: "summary_large_image" },
+  authors: [{ name: SITE.fullName, url: SITE.url }],
+  creator: SITE.fullName,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { "max-image-preview": "large", "max-snippet": -1 },
+  },
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
 };
 
 export default function RootLayout({

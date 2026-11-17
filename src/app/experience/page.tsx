@@ -9,11 +9,13 @@ import {
   GRADES,
 } from "@/content/site";
 import { earlierRoles, engagements } from "@/data/experience";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Experience",
   description: EXPERIENCE_PAGE.title,
-};
+  path: "/experience",
+});
 
 export default function ExperiencePage() {
   return (

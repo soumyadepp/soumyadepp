@@ -23,6 +23,15 @@ pnpm lint
 | `public/images/` | Photos, logos, project screenshots and blog figures |
 | `.github/profile/` | The banner on the GitHub profile README |
 
+## Search and link previews
+
+- `src/lib/seo.ts` builds each page's metadata (`pageMetadata`: title, description, canonical address, link preview tags and the share image) and its structured data (`personSchema`, `websiteSchema`, `profilePageSchema`, `blogPostingSchema`, `projectSchema`, `breadcrumbSchema`). `src/components/JsonLd.tsx` writes the structured data into the page.
+- Every page exports `pageMetadata({ title, description, path })`. A new page needs it too, or it has no canonical address and no share image.
+- Each page has exactly one `<h1>`. Headings written with `#` in a blog post are rendered as `<h2>`, since the post's title is the `<h1>`.
+- `src/app/sitemap.ts` and `src/app/robots.ts` serve `/sitemap.xml` and `/robots.txt`. New projects, talks and posts appear in the sitemap on their own.
+- To verify the site in Google Search Console, set `GOOGLE_SITE_VERIFICATION` to the code Google gives you in the Vercel project's environment variables and redeploy. Pages are built ahead of time, so it has to be set at build time.
+- Check structured data with Google's Rich Results Test after a deploy.
+
 ## Adding content
 
 - **A blog post:** add a Markdown file to `content/blogs/`. The file name becomes the URL.

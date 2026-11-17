@@ -5,11 +5,13 @@ import ChapterLinks from "@/components/layout/ChapterLinks";
 import PageHero from "@/components/layout/PageHero";
 import { CHAPTERS, GRADES, WRITING_PAGE } from "@/content/site";
 import { formatMonth, getAllBlogs } from "@/lib/blogs";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Writing",
   description: WRITING_PAGE.title,
-};
+  path: "/blogs",
+});
 
 export default function WritingPage() {
   const posts = getAllBlogs();

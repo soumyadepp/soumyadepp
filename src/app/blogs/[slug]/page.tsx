@@ -6,7 +6,13 @@ import BlogMarkdown from "@/components/BlogMarkdown";
 import Crumb from "@/components/layout/Crumb";
 import Frame from "@/components/reel/Frame";
 import { GRADES, WRITING_PAGE } from "@/content/site";
+import JsonLd from "@/components/JsonLd";
 import { formatDay, getAllBlogs, getBlogBySlug } from "@/lib/blogs";
+import {
+  blogPostingSchema,
+  breadcrumbSchema,
+  pageMetadata,
+} from "@/lib/seo";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -20,10 +26,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getBlogBySlug(slug);
   if (!post) return {};
-  return {
+  return pageMetadata({
     title: post.title,
     description: post.excerpt,
-  };
+    path: `/blogs/${post.slug}`,
+    article: { publishedTime: post.date, tags: post.tags },
+  });
 }
 
 export default async function PostPage({ params }: Props) {
@@ -33,6 +41,15 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={[
+          blogPostingSchema(post),
+          breadcrumbSchema([
+            { label: WRITING_PAGE.kicker, path: "/blogs" },
+            { label: post.title, path: `/blogs/${post.slug}` },
+          ]),
+        ]}
+      />
       <header className="relative overflow-hidden">
         <Frame
           mode="waves"

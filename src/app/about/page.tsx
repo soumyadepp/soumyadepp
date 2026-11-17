@@ -6,11 +6,14 @@ import PageHero from "@/components/layout/PageHero";
 import SubjectPhoto from "@/components/photo/SubjectPhoto";
 import { ABOUT_PAGE, GRADES } from "@/content/site";
 import { talks } from "@/data/talks";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata, personSchema, profilePageSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description: ABOUT_PAGE.lead,
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   const facts = [
@@ -20,6 +23,7 @@ export default function AboutPage() {
 
   return (
     <>
+      <JsonLd data={[personSchema(), profilePageSchema(ABOUT_PAGE.lead)]} />
       <PageHero
         anchor="intro"
         kicker={ABOUT_PAGE.kicker}

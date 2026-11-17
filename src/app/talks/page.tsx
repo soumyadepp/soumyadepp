@@ -5,11 +5,13 @@ import ChapterLinks from "@/components/layout/ChapterLinks";
 import PageHero from "@/components/layout/PageHero";
 import { CHAPTERS, GRADES, TALKS_PAGE } from "@/content/site";
 import { talks } from "@/data/talks";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Talks",
   description: TALKS_PAGE.title,
-};
+  path: "/talks",
+});
 
 export default function TalksPage() {
   return (

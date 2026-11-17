@@ -3,11 +3,13 @@ import Link from "next/link";
 import PrintButton from "@/components/resume/PrintButton";
 import { CRUMB, RESUME_PAGE } from "@/content/site";
 import { resume } from "@/data/resume";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Resume",
   description: resume.summary,
-};
+  path: "/resume",
+});
 
 function Heading({ children }: { children: React.ReactNode }) {
   return (

@@ -18,6 +18,14 @@ export const SITE = {
   role: "Software Engineer",
   url: "https://www.soumyadepp.com",
   location: "Ahmedabad, India",
+  language: "en",
+  locale: "en_US",
+  shareImage: {
+    path: "/opengraph-image.png",
+    width: 1200,
+    height: 630,
+    alt: "Soumyadeep Ghosh. Software engineer. Builder. Team lead.",
+  },
   title: "Soumyadeep Ghosh | Software Engineer",
   description:
     "Soumyadeep Ghosh is a software engineer working across backend, frontend and cloud. Founding engineer on a building design product, and now its engineering lead.",

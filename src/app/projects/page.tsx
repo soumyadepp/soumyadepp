@@ -6,11 +6,13 @@ import PageHero from "@/components/layout/PageHero";
 import Frame from "@/components/reel/Frame";
 import { CHAPTERS, GRADES, WORK_PAGE } from "@/content/site";
 import { projects } from "@/data/projects";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Work",
   description: WORK_PAGE.note,
-};
+  path: "/projects",
+});
 
 export default function WorkPage() {
   const featured = projects.filter((project) => project.featured);

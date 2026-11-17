@@ -6,7 +6,8 @@ import remarkGfm from "remark-gfm";
 
 /**
  * Renders a post's markdown. Styling comes from the prose-paper class on
- * the surrounding article.
+ * the surrounding article. A top-level heading in the markdown becomes a
+ * second-level one, because the post's title is the page's main heading.
  */
 export default function BlogMarkdown({ content }: { content: string }) {
   return (
@@ -14,6 +15,7 @@ export default function BlogMarkdown({ content }: { content: string }) {
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeSlug, rehypeHighlight]}
       components={{
+        h1: ({ id, children }) => <h2 id={id}>{children}</h2>,
         img: ({ src, alt }) =>
           typeof src === "string" ? (
             <Image

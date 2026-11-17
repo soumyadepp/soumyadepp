@@ -21,11 +21,14 @@ const CHIP =
  * Args:
  *   variant: "page" fills the screen, "section" sits at the end of a page,
  *     and "reel" fits inside a home reel chapter and clears its chapter bar.
+ *     Only "page" makes its title the page's main heading; the others sit
+ *     under a page that already has one.
  */
 export default function ContactPanel({ variant = "page" }: ContactPanelProps) {
   const [copied, setCopied] = useState(false);
   const [clock, setClock] = useState("");
   const reel = variant === "reel";
+  const Heading = variant === "page" ? "h1" : "h2";
 
   useEffect(() => {
     const format = new Intl.DateTimeFormat("en-GB", {
@@ -94,11 +97,7 @@ export default function ContactPanel({ variant = "page" }: ContactPanelProps) {
       >
         <div className="flex min-w-0 flex-col gap-5 lg:col-span-7">
           <p className="t-label text-quiet">{CONTACT_PAGE.kicker}</p>
-          {reel ? (
-            <h2 className="t-title">{CONTACT_PAGE.title}</h2>
-          ) : (
-            <h1 className="t-title">{CONTACT_PAGE.title}</h1>
-          )}
+          <Heading className="t-title">{CONTACT_PAGE.title}</Heading>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             <a
               href={`mailto:${SITE.email}`}

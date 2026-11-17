@@ -4,7 +4,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/layout/PageHero";
 import { WORK_PAGE } from "@/content/site";
+import JsonLd from "@/components/JsonLd";
 import { getProject, projects } from "@/data/projects";
+import { breadcrumbSchema, pageMetadata, projectSchema } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -18,10 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  return {
+  return pageMetadata({
     title: project.name,
     description: project.summary,
-  };
+    path: `/projects/${project.slug}`,
+  });
 }
 
 function Fact({ label, value }: { label: string; value: string }) {
@@ -43,6 +46,15 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={[
+          projectSchema(project),
+          breadcrumbSchema([
+            { label: WORK_PAGE.kicker, path: "/projects" },
+            { label: project.name, path: `/projects/${project.slug}` },
+          ]),
+        ]}
+      />
       <PageHero
         anchor="work"
         parent={{ label: WORK_PAGE.kicker, href: "/projects" }}

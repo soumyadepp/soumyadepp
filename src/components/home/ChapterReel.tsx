@@ -184,19 +184,9 @@ export default function ChapterReel() {
                       label={chapter.frameLabel}
                       focusX={0.5}
                       focusY={0.34}
+                      wideFocusX={0.7}
+                      wideFocusY={0.38}
                       badges={chapter.badges}
-                      className="md:hidden"
-                    />
-                  )}
-                  {index !== 0 && (
-                    <Frame
-                      mode={chapter.mode}
-                      grade={chapter.grade}
-                      label={chapter.frameLabel}
-                      focusX={0.7}
-                      focusY={0.38}
-                      badges={chapter.badges}
-                      className="hidden md:block"
                     />
                   )}
                   {index === 0 && (

@@ -166,15 +166,15 @@ export default async function ProjectPage({ params }: Props) {
         </section>
 
         {project.install && (
-          <section className="grid gap-x-6 gap-y-8 lg:grid-cols-12">
+          <section className="grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-12">
             <h2 className="t-label text-quiet lg:col-span-3">
               {WORK_PAGE.install}
             </h2>
-            <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-9">
+            <ul className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-9">
               {project.install.map((item) => (
                 <li
                   key={item.name}
-                  className={`flex flex-col gap-5 border border-line bg-panel p-5 ${item.wide ? "sm:col-span-2" : ""}`}
+                  className={`flex min-w-0 flex-col gap-5 border border-line bg-panel p-5 ${item.wide ? "sm:col-span-2" : ""}`}
                 >
                   <a
                     href={item.href}

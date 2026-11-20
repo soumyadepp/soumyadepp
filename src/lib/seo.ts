@@ -181,7 +181,8 @@ export function blogPostingSchema(post: {
  * Describes a project as software its owner wrote.
  *
  * Args:
- *   project: The project's slug, name, summary, stack, year and links.
+ *   project: The project's slug, name, summary, stack, year, links and
+ *     the registry pages it is installed from, which become `sameAs`.
  *
  * Returns:
  *   A schema.org SoftwareSourceCode.
@@ -194,7 +195,12 @@ export function projectSchema(project: {
   year: string;
   github?: string;
   live?: string;
+  install?: { href: string }[];
 }) {
+  const elsewhere = [
+    ...(project.live ? [project.live] : []),
+    ...(project.install ?? []).map((item) => item.href),
+  ];
   return {
     "@type": "SoftwareSourceCode",
     name: project.name,
@@ -203,7 +209,7 @@ export function projectSchema(project: {
     programmingLanguage: project.stack,
     dateCreated: project.year,
     ...(project.github ? { codeRepository: project.github } : {}),
-    ...(project.live ? { sameAs: project.live } : {}),
+    ...(elsewhere.length > 0 ? { sameAs: elsewhere } : {}),
     author: { "@id": absoluteUrl("/#person") },
   };
 }

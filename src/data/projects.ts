@@ -10,6 +10,16 @@ export type Screen = {
   paper?: boolean;
 };
 
+export type Install = {
+  name: string;
+  logo: string;
+  registry: string;
+  command: string;
+  href: string;
+  invert?: boolean;
+  wide?: boolean;
+};
+
 export type Project = {
   slug: string;
   name: string;
@@ -28,6 +38,7 @@ export type Project = {
   post?: string;
   github?: string;
   live?: string;
+  install?: Install[];
 };
 
 export const projects: Project[] = [
@@ -36,57 +47,82 @@ export const projects: Project[] = [
     name: "PopSub",
     cover: "/images/blog/building-popsub/cover.svg",
     summary:
-      "A real-time pub/sub server over WebSockets with topic routing and at-least-once delivery.",
-    why: "Developers who need reliable message distribution often do not need the operations that come with a full message platform. PopSub is one self-contained process for edge deployments and local development.",
+      "A WebSocket publish/subscribe broker in Rust with topic logs, durable sessions and at-least-once delivery, and client libraries for Rust, TypeScript, Python and Go.",
+    why: "Developers who need reliable message distribution often do not need the operations that come with a full message platform. PopSub is one binary and a data directory, with a JSON protocol any language can speak.",
     features: [
       {
-        name: "Topic routing",
-        line: "Messages go only to the subscribers of their topic.",
+        name: "Topic logs",
+        line: "Every message gets a sequence number, so subscribers replay history and resume without gaps or repeats.",
       },
       {
         name: "At-least-once",
-        line: "Delivery is acknowledged, and retried until it is.",
+        line: "QoS 1 messages are acknowledged per subscriber and retried, then stalled or sent to a dead-letter topic.",
       },
       {
-        name: "Replay buffer",
-        line: "A late subscriber receives the most recent messages.",
+        name: "Durable sessions",
+        line: "Subscriptions and positions survive disconnects, application restarts and server restarts.",
       },
       {
-        name: "Signed access",
-        line: "Clients authenticate with JSON Web Tokens.",
+        name: "Wildcards and groups",
+        line: "Subscribe to orders/#, or share a topic across a group of workers.",
       },
       {
-        name: "Optional persistence",
-        line: "Messages can be stored on disk with sled.",
+        name: "Users and permissions",
+        line: "Per-topic access, Argon2id passwords, JWTs and rate limits, managed on a running server.",
+      },
+      {
+        name: "Four client libraries",
+        line: "Rust, TypeScript, Python and Go, each held to one shared scenario suite.",
       },
     ],
-    stack: ["Rust", "Tokio", "WebSocket", "sled"],
-    status: "In development",
+    stack: ["Rust", "Tokio", "WebSocket", "TypeScript", "Python", "Go"],
+    status: "Released, v0.1.0",
     year: "2026",
     featured: true,
     mode: "broker",
     grade: GRADES.sodium,
     frameLabel: "Trails converging on a broker and fanning out to subscribers",
     post: "building-popsub",
-    screens: [
+    github: "https://github.com/soumyadepp/popsub",
+    install: [
       {
-        src: "/images/blog/building-popsub/architecture.svg",
-        alt: "Publishers send messages into the broker, which holds topics, clients, pending acknowledgements and a store, and fans messages out to subscribers",
-        width: 1200,
-        height: 560,
-        span: "wide",
-        paper: true,
+        name: "Rust",
+        logo: "/images/logos/rust.svg",
+        invert: true,
+        registry: "crates.io",
+        command: "cargo add popsub_sdk",
+        href: "https://crates.io/crates/popsub_sdk",
       },
       {
-        src: "/images/blog/building-popsub/retries.svg",
-        alt: "An unacknowledged message is retried every five seconds and dropped after the fifth retry",
-        width: 1200,
-        height: 380,
-        span: "wide",
-        paper: true,
+        name: "TypeScript",
+        logo: "/images/logos/typescript.svg",
+        registry: "npm",
+        command: "npm install popsub",
+        href: "https://www.npmjs.com/package/popsub",
+      },
+      {
+        name: "Python",
+        logo: "/images/logos/python.svg",
+        registry: "PyPI",
+        command: "pip install popsub",
+        href: "https://pypi.org/project/popsub/",
+      },
+      {
+        name: "Go",
+        logo: "/images/logos/go.svg",
+        registry: "Go modules",
+        command: "go get github.com/soumyadepp/popsub/clients/go",
+        href: "https://pkg.go.dev/github.com/soumyadepp/popsub/clients/go",
+      },
+      {
+        name: "Server",
+        logo: "/images/logos/docker.svg",
+        registry: "ghcr.io",
+        command: "docker pull ghcr.io/soumyadepp/popsub:0.1",
+        href: "https://github.com/soumyadepp/popsub/pkgs/container/popsub",
+        wide: true,
       },
     ],
-    github: "https://github.com/soumyadepp/popsub",
   },
   {
     slug: "neurosim",

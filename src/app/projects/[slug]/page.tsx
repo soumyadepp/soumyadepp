@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/layout/PageHero";
+import CopyCommand from "@/components/project/CopyCommand";
 import { WORK_PAGE } from "@/content/site";
 import JsonLd from "@/components/JsonLd";
 import { getProject, projects } from "@/data/projects";
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 function Fact({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex justify-between gap-6 border-t border-line py-3 first:border-rule">
-      <dt className="text-quiet">{label}</dt>
+      <dt className="shrink-0 whitespace-nowrap text-quiet">{label}</dt>
       <dd className="text-right">{value}</dd>
     </div>
   );
@@ -163,6 +164,51 @@ export default async function ProjectPage({ params }: Props) {
             ))}
           </ul>
         </section>
+
+        {project.install && (
+          <section className="grid gap-x-6 gap-y-8 lg:grid-cols-12">
+            <h2 className="t-label text-quiet lg:col-span-3">
+              {WORK_PAGE.install}
+            </h2>
+            <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-9">
+              {project.install.map((item) => (
+                <li
+                  key={item.name}
+                  className={`flex flex-col gap-5 border border-line bg-panel p-5 ${item.wide ? "sm:col-span-2" : ""}`}
+                >
+                  <a
+                    href={item.href}
+                    className="group flex items-center gap-4"
+                  >
+                    <Image
+                      src={item.logo}
+                      alt=""
+                      width={40}
+                      height={40}
+                      unoptimized
+                      className={`size-10 shrink-0 object-contain ${item.invert ? "invert" : ""}`}
+                    />
+                    <span className="flex min-w-0 flex-1 flex-col">
+                      <span className="t-sub transition-opacity duration-200 group-hover:opacity-70">
+                        {item.name}
+                      </span>
+                      <span className="t-small text-quiet">
+                        {WORK_PAGE.installVia} {item.registry}
+                      </span>
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className="text-quiet transition-colors duration-200 group-hover:text-paper"
+                    >
+                      ↗
+                    </span>
+                  </a>
+                  <CopyCommand command={item.command} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <Link
           href={`/projects/${next.slug}`}

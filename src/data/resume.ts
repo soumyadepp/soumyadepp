@@ -115,11 +115,11 @@ export const resume = {
   projects: [
     {
       name: "PopSub",
-      stack: "Rust, Tokio, WebSocket, sled, JWT",
+      stack: "Rust, Tokio, WebSocket, TypeScript, Python, Go",
       link: "github.com/soumyadepp/popsub",
       bullets: [
-        "Built a WebSocket pub/sub broker with topic-based routing, a replay buffer and optional sled persistence.",
-        "Implemented at-least-once delivery (QoS 1) with acknowledgements, timed retries and JWT authentication.",
+        "Built and released a WebSocket pub/sub broker with sequenced topic logs, durable sessions, wildcard and shared subscriptions, and at-least-once delivery with dead-lettering.",
+        "Shipped client libraries for Rust, TypeScript, Python and Go on crates.io, npm and PyPI, all held to one shared scenario suite, with a tag-driven release pipeline.",
       ],
     },
     {

@@ -64,7 +64,7 @@ export const projects: Project[] = [
       },
       {
         name: "Wildcards and groups",
-        line: "Subscribe to orders/#, or share a topic across a group of workers.",
+        line: "Subscribe to orders/#, or split a topic across an account's group of workers.",
       },
       {
         name: "Users and permissions",
@@ -72,11 +72,11 @@ export const projects: Project[] = [
       },
       {
         name: "Four client libraries",
-        line: "Rust, TypeScript, Python and Go, each held to one shared scenario suite.",
+        line: "Rust, TypeScript, Python and Go, each held to one shared scenario suite, with runnable examples.",
       },
     ],
     stack: ["Rust", "Tokio", "WebSocket", "TypeScript", "Python", "Go"],
-    status: "Released, v0.1.0",
+    status: "Released, v0.2.0",
     year: "2026",
     featured: true,
     mode: "broker",
@@ -118,7 +118,7 @@ export const projects: Project[] = [
         name: "Server",
         logo: "/images/logos/docker.svg",
         registry: "ghcr.io",
-        command: "docker pull ghcr.io/soumyadepp/popsub:0.1",
+        command: "docker pull ghcr.io/soumyadepp/popsub:0.2",
         href: "https://github.com/soumyadepp/popsub/pkgs/container/popsub",
         wide: true,
       },

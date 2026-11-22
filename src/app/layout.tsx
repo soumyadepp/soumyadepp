@@ -1,13 +1,28 @@
 import type { Metadata } from "next";
-import { Host_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/layout/Nav";
 import { SITE } from "@/content/site";
 
-const host = Host_Grotesk({
+const host = localFont({
   variable: "--font-host",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  src: [
+    {
+      path: "./fonts/host-grotesk-latin-400.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/host-grotesk-latin-500.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/host-grotesk-latin-600.woff2",
+      weight: "600",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {

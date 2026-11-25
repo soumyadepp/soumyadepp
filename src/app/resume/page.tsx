@@ -62,7 +62,7 @@ export default function ResumePage() {
             <div key={`${role.company}-${role.title}`} className="mt-1.5">
               <div className="flex justify-between gap-4">
                 <h3 className="font-bold">
-                  {role.title}, {role.company}, {role.location}
+                  {role.title} | {role.company} | {role.location}
                 </h3>
                 <span className="shrink-0">{role.period}</span>
               </div>
@@ -111,7 +111,7 @@ export default function ResumePage() {
           <div className="mt-1 flex justify-between gap-4">
             <p>
               <span className="font-bold">{resume.education.degree}</span>,{" "}
-              {resume.education.institution}
+              {resume.education.institution} | {resume.education.grade}
             </p>
             <span className="shrink-0">{resume.education.period}</span>
           </div>

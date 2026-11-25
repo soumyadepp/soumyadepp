@@ -57,7 +57,7 @@ function roleFrom(source: RoleSource): ResumeRole {
     title: latest.title,
     company: engagement.company,
     location: `${engagement.location}, ${COUNTRY}`,
-    period: `${start}${PERIOD_JOIN}${end === "now" ? "Present" : end}`,
+    period: `${start}${RANGE_JOIN}${end === "now" ? "Present" : end}`,
     bullets: source.bullets,
   };
 }
@@ -70,6 +70,7 @@ function linkTo(href: string): { label: string; href: string } {
 }
 
 const PERIOD_JOIN = " to ";
+const RANGE_JOIN = " - ";
 const COUNTRY = "India";
 const PROFILES = SOCIALS.filter(
   (social) => social.icon === "github" || social.icon === "linkedin",
@@ -77,37 +78,34 @@ const PROFILES = SOCIALS.filter(
 
 export const resume = {
   name: SITE.fullName,
-  title: SITE.role,
+  title: "Full-Stack Software Engineer",
   location: SITE.location,
   email: SITE.email,
   links: [...PROFILES.map((social) => linkTo(social.href)), linkTo(SITE.url)],
   summary:
-    "Software engineer with 3+ years of full-time experience building and shipping production systems across building design (AEC), mental health, IoT and logistics. Currently leads full-stack development of an early-stage SaaS product, from architecture to deployment. Works across backend, frontend and cloud infrastructure.",
+    "Full-stack software engineer. Founding engineer on an early-stage building design (AEC) SaaS product, taken from ideation to production, and now lead its team of 10. Own the backend architecture and data model, and work across the frontend, cloud infrastructure and AI features. Earlier built production software for mental health, IoT and logistics.",
   roles: [
     roleFrom({
       company: "Infocusp Innovations",
-      positions: ["Software Engineer 2"],
-      bullets: [
-        "Lead full-stack development of an early-stage AEC SaaS product from ideation to production, covering backend architecture, data models and deployment.",
-        "Designed backend services in Python and FastAPI on Google Cloud Run, with Cloud Firestore, PostgreSQL and BigQuery for application and geospatial data.",
-        "Established system design patterns, code review and sprint planning practices adopted across the engineering team, and mentored engineers.",
-        "Worked across backend, React and TypeScript frontend, Terraform infrastructure and AI features, with domain experts, product managers and design.",
+      positions: [
+        "Software Engineer 2",
+        "Software Engineer 1",
+        "Associate Software Engineer",
       ],
-    }),
-    roleFrom({
-      company: "Infocusp Innovations",
-      positions: ["Associate Software Engineer", "Software Engineer 1"],
       bullets: [
-        "Built RESTful backend services and full-stack features for a mental health and habit tracking application using TypeScript and Node.js.",
-        "Owned features end to end, from technical design and implementation to automated testing and production deployment on Google Cloud.",
-        "Developed connected-device systems for a smart bed manufacturer, integrating with hardware data pipelines and delivering high-reliability features.",
+        "Founding engineer on an AEC SaaS product for site selection and site plan design, from ideation to production. Promoted twice since joining.",
+        "Own the backend architecture and data model: Python and FastAPI services on Google Cloud Run, with Cloud Firestore, PostgreSQL and BigQuery for application and geospatial data.",
+        "Modeled zoning, parcel and map data, site plan compliance and development financials with domain experts and product. The product now covers 8 cities in the US and New Zealand and 2,000+ zoning and overlay districts.",
+        "Cut a map API response from 2.17 MB to 0.3 KB gzipped and its first BigQuery query from 65 s to 1.5 s, and removed a 106 s data preload from every server's startup.",
+        "Fixed a browser out-of-memory crash: the map repainted 361 times every 3 s with no one touching it and the heap grew to 3 GB. It now sits idle and stays near 300 MB.",
+        "Lead a team of 10, set its system design, code review and sprint practices, and have mentored 5 teammates.",
       ],
     }),
     roleFrom({
       company: "Shipmnts",
       positions: ["Software Engineer"],
       bullets: [
-        "Built and shipped features for a B2B logistics and shipment tracking platform, improving visibility across supply chain workflows.",
+        "Built and shipped features for a B2B logistics and shipment tracking platform.",
         "Implemented real-time data processing and tracking on the core platform, used in production by business clients.",
       ],
     }),
@@ -167,7 +165,8 @@ export const resume = {
   education: {
     degree: "B.Tech in Information Technology",
     institution: "Dharmsinh Desai University, Nadiad",
-    period: "2019 to 2023",
+    grade: "CPI: 9.2/10",
+    period: "2019 - 2023",
   },
   certifications: "AlgoExpert Certification; Foundations of UX Design (Google)",
 } as const;

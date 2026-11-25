@@ -1,12 +1,12 @@
 ---
-title: "My CI Doesn't Know My Passwords"
+title: "My CI doesn't know my passwords"
 date: "2026-11-21"
 tags: ["GitHub Actions", "CI/CD", "Trusted Publishing", "OIDC", "Security"]
 excerpt: "Build a GitHub Actions release pipeline with no stored secrets: tag releases, matrix builds, fail-fast, OIDC trusted publishing to npm and PyPI, and approvals."
 coverImage: "/images/blog/github-actions-release-pipeline/cover.svg"
 ---
 
-# My CI Doesn't Know My Passwords
+# My CI doesn't know my passwords
 
 For a long time I released side projects the way most people do. Bump the version, run a few publish commands from my laptop, and hope I didn't miss one. That works fine while there's one place to publish. Add a second and a third, and you start forgetting things.
 

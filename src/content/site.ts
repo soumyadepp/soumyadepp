@@ -24,7 +24,7 @@ export const SITE = {
     path: "/opengraph-image.png",
     width: 1200,
     height: 630,
-    alt: "Soumyadeep Ghosh. Software engineer. Builder. Team lead.",
+    alt: "Soumyadeep Ghosh. Software engineer and team lead.",
   },
   title: "Soumyadeep Ghosh | Software Engineer",
   description:
@@ -103,8 +103,8 @@ export const CHAPTERS: Chapter[] = [
     name: "Intro",
     href: "/about",
     kicker: "",
-    title: "Software engineer. Builder. Team lead.",
-    line: "I'm Soumyadeep. I ship on Fridays and still sleep well.",
+    title: "Software engineer and team lead.",
+    line: "I'm Soumyadeep. I build products end to end, from the data model to the screen, and I still ship on Fridays.",
     action: "About me",
     secondary: { label: "Resume", href: "/resume" },
     mode: "pull",
@@ -117,7 +117,7 @@ export const CHAPTERS: Chapter[] = [
     href: "/experience",
     kicker: "Experience",
     title: "Where I've worked.",
-    line: "Cargo that moves, beds that rest, minds that heal, buildings that stand. I've written software for all four.",
+    line: "I've written production software for logistics, smart beds, mental health and building design, which makes for a confusing LinkedIn.",
     action: "See my experience",
     badges: COMPANY_ORBITS,
     mode: "orbits",
@@ -153,8 +153,8 @@ export const CHAPTERS: Chapter[] = [
     name: "Talks",
     href: "/talks",
     kicker: "Talks",
-    title: "I share what I learn.",
-    line: "I go back to universities to teach what I wish someone had shown me: C++, cloud, problem solving and competitive programming.",
+    title: "I go back to college sometimes.",
+    line: "On purpose, this time. I give engineering students sessions on C++, cloud, problem solving and competitive programming.",
     action: "See the talks",
     images: [
       {
@@ -179,8 +179,8 @@ export const CHAPTERS: Chapter[] = [
     name: "Writing",
     href: "/blogs",
     kicker: "Writing",
-    title: "I write about what I build and learn.",
-    line: "Rust, Python, message brokers, and what I learned building each.",
+    title: "I write things down before I forget them.",
+    line: "Rust, Python memory, when to optimize, how I built PopSub and what fast AI-assisted work does to motivation.",
     action: "Read the blog",
     mode: "waves",
     grade: GRADES.paper,
@@ -294,7 +294,7 @@ export const ABOUT_PAGE = {
   kicker: "About",
   title: "A bit about me.",
   frameLabel: "Contour lines slowly shifting like a map of terrain",
-  lead: "I'm Soumyadeep. I turn 'it works on my machine' into 'it works'.",
+  lead: "I'm Soumyadeep, a software engineer in Ahmedabad. Most of my work is on the backend, where the bugs are harder to screenshot.",
   facts: [
     {
       figure: String(YEARS),
@@ -320,7 +320,7 @@ export const ABOUT_PAGE = {
   storyLabel: "Background",
   paragraphs: [
     "I wrote my first production code in 2021, building React screens for a local startup while I was still at university. A few months in, I was leading a team of four.",
-    "Since then I have worked on logistics software, smart beds, a mental health app and, most recently, a product that helps people design buildings. Along the way I drifted from the frontend to the backend. These days most of my time goes into how data is shaped and how systems are run.",
+    "Since then I have worked on logistics software, smart beds, a mental health app and, most recently, a product that helps people design buildings. Along the way I moved from the frontend to the backend, and I've stayed there.",
     "I studied Information Technology at Dharmsinh Desai University and finished in the top 1% of my class. I go back to colleges when they invite me, to teach C++, cloud, problem solving and competitive programming.",
   ],
   outsideLabel: "Outside work",

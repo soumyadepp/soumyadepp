@@ -302,64 +302,6 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/soumyadepp/PhotoRecipe",
   },
-  {
-    slug: "northern-cleaning-crew",
-    name: "Northern Cleaning Crew",
-    summary:
-      "A client website where a cleaning business shows its services and visitors request quotes.",
-    why: "A small business needed to present its services, manage them without a developer, and take quote requests directly from the site.",
-    features: [
-      {
-        name: "Service management",
-        line: "The owner edits services from a dashboard.",
-      },
-      {
-        name: "Quote requests",
-        line: "Visitors price a job and ask for a quote in one flow.",
-      },
-      {
-        name: "Works on any screen",
-        line: "Laid out for phones first, then desktop.",
-      },
-    ],
-    stack: ["React", "TypeScript", "Tailwind CSS", "Firebase"],
-    status: "Completed",
-    year: "2024",
-    featured: false,
-    mode: "orbits",
-    grade: GRADES.daylight,
-    frameLabel: "Points of light circling on tilted orbits",
-    screens: [
-      {
-        src: "/images/ncc/desktop-image-1.png",
-        alt: "The home page with a pricing calculator for cleaning services",
-        width: 3454,
-        height: 1994,
-        span: "wide",
-      },
-      {
-        src: "/images/ncc/desktop-image-2.png",
-        alt: "A second desktop view of the site",
-        width: 3454,
-        height: 1994,
-        span: "wide",
-      },
-      {
-        src: "/images/ncc/mobile-image-1.png",
-        alt: "The site on a phone",
-        width: 784,
-        height: 1686,
-        span: "narrow",
-      },
-      {
-        src: "/images/ncc/mobile-image-2.png",
-        alt: "A second phone view",
-        width: 784,
-        height: 1686,
-        span: "narrow",
-      },
-    ],
-  },
 ];
 
 /**

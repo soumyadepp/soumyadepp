@@ -69,10 +69,7 @@ export const engagements: Engagement[] = [
     positions: [{ title: "Software Engineer", period: "Jun 2022 to Nov 2022" }],
     summary:
       "Shipmnts runs a logistics platform that handles live supply chain data. I built features that let businesses track their shipments on it.",
-    highlights: [
-      "Shipped features that simplified logistics workflows for business clients",
-      "Reworked flows around the problems users reported",
-    ],
+    highlights: [],
   },
 ];
 

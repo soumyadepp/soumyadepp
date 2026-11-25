@@ -46,7 +46,7 @@ export const talks: Talk[] = [
   },
   {
     id: "ddu-cloud",
-    title: "Cloud Basics, AWS & Chaos Engineering",
+    title: "Cloud basics, AWS and chaos engineering",
     event: "DDU Tech Talk",
     venue: "Dharmsinh Desai University, Nadiad",
     date: "2026",
@@ -72,8 +72,8 @@ export const talks: Talk[] = [
   },
   {
     id: "cspit-dsa",
-    title: "Problem Solving, DSA & Interview Prep",
-    event: "CSPIT CP Talk",
+    title: "Problem solving, DSA and interview prep",
+    event: "CSPIT Talk",
     venue: "Charusat University, Anand",
     date: "2025",
     audience: "Engineering students and placement aspirants",
@@ -100,7 +100,7 @@ export const talks: Talk[] = [
   },
   {
     id: "cspit-cp",
-    title: "Competitive Programming",
+    title: "Competitive programming",
     event: "CSPIT CP Talk",
     venue: "Charusat University, Anand",
     date: "2025",

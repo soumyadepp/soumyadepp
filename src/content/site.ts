@@ -294,6 +294,9 @@ export const ABOUT_PAGE = {
   kicker: "About",
   title: "A bit about me.",
   frameLabel: "Contour lines slowly shifting like a map of terrain",
+  photo: "/images/about-cafe.jpg",
+  photoAlt:
+    "Soumyadeep smiling at a café table, holding a glass with a paper straw",
   lead: "I'm Soumyadeep, a software engineer in Ahmedabad. Most of my work is on the backend, where the bugs are harder to screenshot.",
   facts: [
     {

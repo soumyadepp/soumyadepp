@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import ContactPanel from "@/components/contact/ContactPanel";
 import PageHero from "@/components/layout/PageHero";
-import SubjectPhoto from "@/components/photo/SubjectPhoto";
 import { ABOUT_PAGE, GRADES } from "@/content/site";
 import { talks } from "@/data/talks";
 import JsonLd from "@/components/JsonLd";
@@ -35,9 +34,12 @@ export default function AboutPage() {
 
       <section className="wrap grid gap-x-6 gap-y-10 pt-10 pb-24 lg:grid-cols-12 lg:items-start">
         <div className="relative aspect-[4/5] overflow-hidden bg-panel lg:sticky lg:top-8 lg:col-span-5">
-          <SubjectPhoto
+          <Image
+            src={ABOUT_PAGE.photo}
+            alt={ABOUT_PAGE.photoAlt}
+            fill
             sizes="(min-width: 1024px) 40vw, 100vw"
-            fit="object-cover object-[38%_50%]"
+            className="object-cover"
             priority
           />
         </div>

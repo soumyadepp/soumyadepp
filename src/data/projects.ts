@@ -244,7 +244,7 @@ export const projects: Project[] = [
     cover: "/images/projects/format-benchmark/cover.svg",
     summary:
       "Measures how language models respond when given the same data in different formats.",
-    why: "The format you hand a model changes what it costs and how well it answers. This toolkit measures that difference instead of guessing.",
+    why: "The format you hand a model changes what it costs and how well it answers. This toolkit measures the difference on the same data.",
     features: [
       {
         name: "Several formats",

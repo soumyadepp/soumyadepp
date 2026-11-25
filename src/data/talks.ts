@@ -54,15 +54,14 @@ export const talks: Talk[] = [
     duration: "90 minutes",
     topics: ["AWS", "Cloud Computing", "Netflix", "Chaos Engineering"],
     description:
-      "Invited back to my own college to talk about the fundamentals of cloud computing and AWS, and as a bonus, dived into how Netflix uses chaos engineering to build resilient, fault-tolerant systems at scale.",
+      "My own college invited me back to talk about cloud computing. I covered the basics of the cloud and AWS, then how Netflix uses chaos engineering to keep its systems running when parts of them fail.",
     longDescription:
-      "A comprehensive exploration of cloud computing fundamentals, AWS services, and advanced resilience patterns. We covered the basics of cloud architecture, discussed key AWS services, and explored how modern companies like Netflix engineer reliability through controlled chaos testing.",
+      "We started with what the cloud is and why teams move to it, then walked through the main AWS services and how they fit together. The last part was about chaos engineering: Netflix breaks parts of its own production systems on purpose, so it finds the weak spots before an outage does.",
     keyTakeaways: [
-      "Cloud computing fundamentals and benefits",
-      "AWS core services and architecture patterns",
-      "Building scalable and reliable systems",
-      "Introduction to chaos engineering",
-      "Resilience and fault tolerance at scale",
+      "What the cloud offers over running your own servers",
+      "The core AWS services and common ways to combine them",
+      "Designing systems that scale and stay up",
+      "What chaos engineering is and why Netflix uses it",
     ],
     images: [
       "/images/ddu_talk_1/talk_image_1.jpeg",
@@ -81,15 +80,15 @@ export const talks: Talk[] = [
     duration: "60 minutes",
     topics: ["DSA", "Problem Solving", "Interview Prep"],
     description:
-      "Invited as a speaker to share my approach to problem solving, data structures, algorithms, and cracking technical interviews, helping students build a strong foundation for placements.",
+      "A talk for students preparing for placements, on how I approach problem solving, data structures and algorithms, and how to prepare for technical interviews.",
     longDescription:
-      "This talk covers a comprehensive approach to mastering data structures and algorithms, with a focus on practical problem-solving strategies used in technical interviews. I shared insights from my journey as an engineer and practical patterns that helped me and many others crack interviews at top tech companies.",
+      "I shared how I learned data structures and algorithms, the problem-solving patterns that helped me in my own interviews, and how I would prepare for one again.",
     keyTakeaways: [
-      "Core DSA concepts and their real-world applications",
-      "Problem-solving patterns and mental models",
-      "Interview preparation strategies and best practices",
-      "Common pitfalls and how to avoid them",
-      "Building intuition for algorithm selection",
+      "The core data structures and where they show up in real code",
+      "Patterns for breaking down an unfamiliar problem",
+      "How to prepare for a technical interview",
+      "Common interview mistakes and how to avoid them",
+      "How to tell which algorithm a problem needs",
     ],
     images: [
       "/images/cspit_talk_1/cep_talk_2.jpeg",
@@ -109,15 +108,15 @@ export const talks: Talk[] = [
     duration: "75 minutes",
     topics: ["Competitive Programming", "Algorithms", "Contest Strategy"],
     description:
-      "Invited to speak on competitive programming, covering contest strategy, efficient algorithm design, and how CP builds the muscle memory needed to tackle any engineering challenge.",
+      "A talk on competitive programming: how to approach a contest, how to design efficient algorithms, and why the practice carries over to everyday engineering.",
     longDescription:
-      "This session dived into the world of competitive programming, exploring how competing in contests sharpens your problem-solving skills. We discussed strategies for approaching problems under time pressure, optimizing solutions, and building the algorithmic intuition that translates directly to production engineering work.",
+      "We talked about what contests train: reading a problem under time pressure, choosing an approach, and speeding up a solution that works but is too slow. I also covered where that habit pays off in production engineering.",
     keyTakeaways: [
-      "Developing contest strategy and time management",
-      "Efficient algorithm design and implementation",
-      "Common CP patterns and techniques",
-      "How CP translates to real-world engineering",
-      "Resources for continuous learning and practice",
+      "Contest strategy and managing your time",
+      "Designing and implementing efficient algorithms",
+      "Patterns and techniques that come up often in contests",
+      "Where competitive programming helps in day-to-day engineering",
+      "Where to practice and what to read next",
     ],
     images: [
       "/images/cspit_talk_2/cep_talk_1.jpeg",

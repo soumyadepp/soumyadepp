@@ -42,7 +42,7 @@ export const engagements: Engagement[] = [
       { title: "Associate Software Engineer", period: "Jul 2023 to Dec 2023" },
     ],
     summary:
-      "I joined this building design product as one of its first engineers, when it was a blank page. It helps builders and architects choose sites and design compliant site plans. I helped take it to production, and I now lead the engineers who build it.",
+      "I joined this building design product as one of its first engineers, before its first release. It helps builders and architects choose sites and design compliant site plans. I helped take it to production, and I now lead the engineers who build it.",
     focus: [
       {
         label: "Technical leadership",
@@ -50,11 +50,11 @@ export const engagements: Engagement[] = [
       },
       {
         label: "Across workstreams",
-        line: "I work across backend, frontend, cloud infrastructure and the AI features, and step into whichever stream a release depends on. Scope is decided together with product and design.",
+        line: "I work across backend, frontend, cloud infrastructure and the AI features, and move to whichever one a release is waiting on. I decide scope together with product and design.",
       },
       {
         label: "In the domain",
-        line: "I learned the domain well enough to model it: zoning rules, parcel and map data, site plan compliance and development financials, built into systems architects can rely on.",
+        line: "I learned zoning rules, parcel and map data, site plan compliance and development financials well enough to model them in code.",
       },
     ],
     highlights: [],
@@ -68,7 +68,7 @@ export const engagements: Engagement[] = [
     current: false,
     positions: [{ title: "Software Engineer", period: "Jun 2022 to Nov 2022" }],
     summary:
-      "Logistics infrastructure. I built features that let businesses track shipments at scale, on a platform handling live supply chain data.",
+      "Shipmnts runs a logistics platform that handles live supply chain data. I built features that let businesses track their shipments on it.",
     highlights: [
       "Shipped features that simplified logistics workflows for business clients",
       "Reworked flows around the problems users reported",

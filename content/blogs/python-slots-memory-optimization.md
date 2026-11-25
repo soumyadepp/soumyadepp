@@ -1,29 +1,27 @@
 ---
-title: "Code for Scale: What Every Python Developer Should Know About '__slots__'"
+title: "Code for scale: what every Python developer should know about '__slots__'"
 date: "2025-03-10"
 tags: ["Python", "Performance", "Memory", "Backend"]
-excerpt: "By default, Python class instances carry a hidden memory cost. Learn how __slots__ can cut object memory usage by ~58% — and when it's actually worth using."
-coverImage: "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*ypl0UwFbcEfKaGv_"
+excerpt: "By default, every Python object keeps its attributes in a dictionary, and that costs memory. How __slots__ cut memory use by ~58% across a million objects, and when it's worth using."
+coverImage: "/images/blog/python-slots-memory-optimization/cover.svg"
 readTime: 8
 ---
 
-# Code for Scale: What Every Python Developer Should Know About '\_\_slots\_\_'
+# Code for scale: what every Python developer should know about '\_\_slots\_\_'
 
-Imagine this:
+Say you're writing a web scraper to gather product data from thousands of e-commerce pages. For each product you store a name, a price and whether it's in stock. You create a `Product` class, and before you know it you're dealing with millions of instances across different categories and sites.
 
-You're developing a web scraper to gather product data from thousands of e-commerce pages. For each product, you store a name, price, and availability status. You create a `Product` class, and before you know it, you're dealing with millions of instances across different categories and sites.
+Everything works fine at first, until the script starts slowing down and memory usage shoots through the roof.
 
-Everything works fine at first — until your script starts slowing down and memory usage shoots through the roof.
+But each product only stores three simple values. Why is Python being so wasteful?
 
-But hey — each product only stores three simple values. Why is Python being so wasteful?
+It comes down to how Python stores attributes by default. Unless you know about `__slots__`, your three-field class uses more memory than it needs to.
 
-Turns out, the default Python object model keeps a memory-hungry secret. Unless you know about `__slots__`, your minimalist class is secretly using more memory than it should.
+This post covers how Python stores object attributes, how much memory `__slots__` saves, and when to use it (and when not to).
 
-In this post, let's explore how Python stores object attributes, how `__slots__` can drastically reduce memory overhead, and when (and when not) to use it.
+## Python classes are flexible, and heavy
 
-## Python Classes Are Flexible — And Heavy
-
-By default, Python class instances are extremely flexible. You can dynamically add attributes to them at runtime, delete them, even monkey-patch methods. This flexibility is made possible because Python stores attributes in a dictionary: `__dict__`.
+By default, Python class instances are very flexible. You can add attributes at runtime, delete them, even monkey-patch methods. That works because Python keeps each instance's attributes in a dictionary, `__dict__`.
 
 ```python
 class Regular:
@@ -38,9 +36,9 @@ print(obj.__dict__)  # {'name': 'Laptop', 'price': 999.99, 'available': True}
 
 Each instance carries its own `__dict__`, which adds memory overhead. If you're only creating a handful of instances, that overhead doesn't matter. But scale that to millions of objects, and you're in for a surprise.
 
-## How `__slots__` Slims Down Your Classes
+## How `__slots__` slims down your classes
 
-`__slots__` is a special attribute that tells Python not to use a dynamic dictionary for attribute storage. Instead, it creates a more memory-efficient structure internally, closer to how objects work in statically typed languages like C.
+`__slots__` is a special class attribute that tells Python to store attributes in a more compact internal structure instead of a per-instance dictionary. That's closer to how objects work in statically typed languages like C.
 
 ```python
 class Slotted:
@@ -52,19 +50,17 @@ class Slotted:
         self.available = available
 ```
 
-Here, `Slotted` instances won't have a `__dict__`, and Python stores attributes in a predefined internal structure, reducing per-object memory footprint.
+`Slotted` instances have no `__dict__`. Their attributes go into slots fixed when the class is defined, so each object takes less memory.
 
-## Real-World Memory Comparison
+## Real-world memory comparison
 
-Let's pit our `Regular` class against the `Slotted` one with a little help from the `pympler` library.
-
-**Step 1: Install pympler**
+Let's pit our `Regular` class against the `Slotted` one with a little help from the `pympler` library. Install it first:
 
 ```bash
 pip install pympler
 ```
 
-**Step 2: Run the benchmark**
+The benchmark creates a million objects of each class and measures both lists:
 
 ```python
 from pympler import asizeof
@@ -105,34 +101,26 @@ Total memory for Slotted objects: 64448832 bytes
 Percentage of memory saved: 57.72%
 ```
 
-That's ~58% less memory usage — a massive win for large-scale systems.
+That's ~58% less memory, roughly 152 MB down to 64 MB for the same million products.
 
-## When Does `__slots__` Deserve a Spot in Your Code?
+## When does `__slots__` deserve a spot in your code?
 
-`__slots__` isn't a silver bullet. For many Python classes it's overkill. If your class needs to stay dynamic, support monkey-patching, or work well with certain libraries and frameworks, sticking with the default is often the better choice.
+For many Python classes, `__slots__` is overkill. If your class needs to stay dynamic, support monkey-patching or work well with certain libraries and frameworks, sticking with the default is often the better choice.
 
-That said, `__slots__` can be a game-changer in the right scenarios.
+It earns its place when you're defining simple data containers, creating a large number of them, and don't need dynamic attributes. Some common cases:
 
-**Consider using `__slots__` when:**
+- product or data model classes in scrapers
+- geometry points, vectors and game entities
+- simulation entities, such as particles or agents
 
-- You're defining simple data containers
-- You're creating a large number of objects
-- You don't need dynamic attributes
+## Where `__slots__` falls short
 
-**Common use cases:**
-
-- Product or data model classes in scrapers
-- Geometry points, vectors, game entities
-- Simulation entities (e.g. particles, agents)
-
-## Where `__slots__` Falls Short
-
-- You cannot add new attributes at runtime that aren't listed in `__slots__`. This restricts the flexibility Python is known for.
+- You cannot add new attributes at runtime that aren't listed in `__slots__`, so you give up some of the flexibility Python is known for.
 - Without `__dict__`, introspection, debugging, and certain serialization techniques can become more complex.
 - Multiple inheritance becomes tricky, especially if only some parent classes define `__slots__`.
 
-## Slotting It All Together
+## Slotting it all together
 
-Python's `__slots__` is a low-effort, high-reward optimization technique. If you're building performance-sensitive applications or simply want to write cleaner and leaner code, it's worth adding this tool to your arsenal.
+`__slots__` takes one line to add, and for a class you create by the million it can cut memory by more than half. If you're building performance-sensitive applications or just want leaner classes, it's worth knowing.
 
-In a world obsessed with scaling, even the tiniest savings per object can have a huge impact. Try it out — your RAM will thank you.
+Small savings per object add up once you have millions of objects, so try it on the class you create most. Your RAM will thank you.

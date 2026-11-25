@@ -1,5 +1,5 @@
 ---
-title: "Building PopSub: A Pub/Sub Broker Small Enough to Read in an Afternoon"
+title: "Building PopSub: a pub/sub broker small enough to read in an afternoon"
 date: "2026-11-10"
 tags: ["Rust", "Pub/Sub", "WebSockets", "Distributed Systems"]
 excerpt: "I wanted to understand what a message broker does when a subscriber goes quiet, so I wrote one. Topics, at-least-once delivery, replay and persistence, in a codebase you can hold in your head."
@@ -7,7 +7,7 @@ coverImage: "/images/blog/building-popsub/cover.svg"
 readTime: 8
 ---
 
-# Building PopSub: A Pub/Sub Broker Small Enough to Read in an Afternoon
+# Building PopSub: a pub/sub broker small enough to read in an afternoon
 
 A pub/sub broker is three hash maps and a retry loop. Everything hard about it is deciding what happens when a message is not acknowledged. PopSub is my attempt to make those decisions in the open, in Rust, in a codebase small enough to read end to end.
 
